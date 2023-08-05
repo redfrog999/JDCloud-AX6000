@@ -23,7 +23,7 @@ on:
 
 env:
   REPO_URL: https://github.com/RavenCage/immortalwrt-mt798x-JDCAX6000
-  REPO_BRANCH: main
+  REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: hanwckf/JDCloud-AX6000/.config
   DIY_P1_SH: hanwckf/JDCloud-AX6000/diy-part1.sh
