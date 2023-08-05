@@ -20,7 +20,7 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: hanwckf/JDCloud-AX6000/.config
   DIY_P1_SH: hanwckf/JDCloud-AX6000/diy-part1.sh
-  DIY_P2_SH: hanwckf/JDCloud-AX6000/diy-part2.
+  DIY_P2_SH: hanwckf/JDCloud-AX6000/diy-part2.sh
   #FEEDS_CONF: feeds.conf.default
   #CONFIG_FILE: .config-360-immortalwrt
   #DIY_P1_SH: diy-part1.sh
