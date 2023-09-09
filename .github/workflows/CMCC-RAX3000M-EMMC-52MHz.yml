@@ -30,7 +30,7 @@ env:
   DIY_P2_SH: hanwckf/CMCC-RAX3000M-EMMC/diy-part2.sh
   SSH_ACTIONS: false
   UPLOAD_FIRMWARE: true
-  UPLOAD_RELEASE: true
+  UPLOAD_RELEASE: false
   TZ: Asia/Shanghai
   ###############改名字##############
   OPENWRT_NAME: hanwckf-52MHz
