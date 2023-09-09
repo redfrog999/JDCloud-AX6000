@@ -23,10 +23,6 @@ rm -rf /tmp/clash.tar.gz >/dev/null 2>&1
 sed -i '/.*GO_VERSION_PATCH:=*/c\GO_VERSION_PATCH:=10' feeds/packages/lang/golang/golang/Makefile
 sed -i '/.*PKG_HASH:=*/c\PKG_HASH:=13755bcce529747d5f2930dee034730c86d02bd3e521ab3e2bbede548d3b953f' feeds/packages/lang/golang/golang/Makefile
 
-#安装最新版Adguardhome
-rm -rf luci-app-adguardhome
-git clone https://github.com/AdguardTeam/AdGuardHome
-
 #安装xiaoroji版Passwall
 rm -rf feeds/luci/applications/luci-app-passwall
 git clone https://github.com/xiaorouji/openwrt-passwall luci/applications/luci-app-passwall
