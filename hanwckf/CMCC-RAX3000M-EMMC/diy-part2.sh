@@ -22,3 +22,21 @@ rm -rf /tmp/clash.tar.gz >/dev/null 2>&1
 ##-----------------Set golang version down to 1.19.10 for docker building-----------------
 sed -i '/.*GO_VERSION_PATCH:=*/c\GO_VERSION_PATCH:=10' feeds/packages/lang/golang/golang/Makefile
 sed -i '/.*PKG_HASH:=*/c\PKG_HASH:=13755bcce529747d5f2930dee034730c86d02bd3e521ab3e2bbede548d3b953f' feeds/packages/lang/golang/golang/Makefile
+
+#安装最新版Adguardhome
+rm -rf luci-app-adguardhome
+git clone https://github.com/AdguardTeam/AdGuardHome
+
+#安装最新版Passwall
+rm -rf luci-app-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall
+
+# remove v2ray-geodata package from feeds (openwrt-22.03 & master)
+rm -rf feeds/packages/net/v2ray-geodata
+git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/net/mosdns
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+
+#安装Alist为最新版
+#rm -rf feeds/packages/lang/golang
+#git clone https://github.com/sbwml/packages_lang_golang -b 20.x feeds/packages/lang/golang
+#git clone https://github.com/sbwml/luci-app-alist package/alist
