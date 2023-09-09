@@ -31,6 +31,10 @@ git clone https://github.com/AdguardTeam/AdGuardHome
 rm -rf luci-app-passwall
 git clone https://github.com/xiaorouji/openwrt-passwall
 
+#安装最新版Passwall2
+rm -rf luci-app-passwall2
+git clone https://github.com/xiaorouji/openwrt-passwall2
+
 # remove v2ray-geodata package from feeds (openwrt-22.03 & master)
 rm -rf feeds/packages/net/v2ray-geodata
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/net/mosdns
