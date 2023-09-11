@@ -34,8 +34,8 @@ sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generat
 # git clone https://github.com/jerrykuku/lua-maxminddb
 
 # 安装xiaorouji最新版Passwall
-rm -rf luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall luci/applications/luci-app-passwall
+#rm -rf feeds/luci/applications/luci-app-passwall
+#git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwal
 
 # remove v2ray-geodata package from feeds (openwrt-22.03 & master)
 rm -rf feeds/packages/net/v2ray-geodata
