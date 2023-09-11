@@ -25,7 +25,7 @@ sed -i '/.*PKG_HASH:=*/c\PKG_HASH:=13755bcce529747d5f2930dee034730c86d02bd3e521a
 
 #安装xiaoroji版Passwall
 #rm -rf feeds/luci/applications/luci-app-passwall
-#git clone https://github.com/xiaorouji/openwrt-passwall luci/applications/luci-app-passwall
+#git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
 
 # remove v2ray-geodata package from feeds (openwrt-22.03 & master)
 rm -rf feeds/packages/net/v2ray-geodata
