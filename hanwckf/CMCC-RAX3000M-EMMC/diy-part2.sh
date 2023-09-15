@@ -35,4 +35,4 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 #安装Alist为最新版
 #rm -rf feeds/packages/lang/golang
 #git clone https://github.com/sbwml/packages_lang_golang -b 20.x feeds/packages/lang/golang
-#git clone https://github.com/sbwml/luci-app-alist package/alist
+git clone https://github.com/sbwml/luci-app-alist package/alist
