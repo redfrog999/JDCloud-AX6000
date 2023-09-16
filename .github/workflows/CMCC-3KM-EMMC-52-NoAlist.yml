@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 ###############改名字##############
-name: 3KM-eMMC-52MHz-PS1&PS2.Docker+DDNS
+name: 3KM-eMMC-52MHz-PS1&PS2.NoDocker.ADG
 
 on:
   repository_dispatch:
