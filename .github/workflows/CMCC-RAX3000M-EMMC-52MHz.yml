@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 ###############改名字##############
-name: CMCC-3KM.PSW1&2-52MHz-0903Fixed
+name: CMCC-3KM.PSW1&2-52-Alist+Docker
 
 on:
   repository_dispatch:
