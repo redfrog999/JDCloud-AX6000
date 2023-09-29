@@ -20,19 +20,3 @@ mkdir -p feeds/luci/applications/luci-app-openclash/root/etc/openclash/core
 mv /tmp/clash feeds/luci/applications/luci-app-openclash/root/etc/openclash/core/clash >/dev/null 2>&1
 rm -rf /tmp/clash.tar.gz >/dev/null 2>&1
 
-#安装xiaoroji版Passwall
-#rm -rf feeds/luci/applications/luci-app-passwall
-#git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
-
-# remove v2ray-geodata package from feeds (openwrt-22.03 & master)
-# drop mosdns and v2ray-geodata packages that come with the source
-#rm -rf feeds/packages/net/v2ray-geodata
-#find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
-#find ./ | grep Makefile | grep mosdns | xargs rm -f
-#git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/net/mosdns
-#git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
-
-#安装Alist为最新版
-#rm -rf feeds/packages/lang/golang
-#git clone https://github.com/sbwml/packages_lang_golang -b 20.x feeds/packages/lang/golang
-#git clone https://github.com/sbwml/luci-app-alist package/alist
