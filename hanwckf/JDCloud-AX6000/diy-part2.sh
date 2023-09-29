@@ -33,17 +33,4 @@ sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generat
 # rm -rf lua-maxminddb
 # git clone https://github.com/jerrykuku/lua-maxminddb
 
-# 安装xiaorouji最新版Passwall
-#rm -rf feeds/luci/applications/luci-app-passwall
-#git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwal
-
-# remove v2ray-geodata package from feeds (openwrt-22.03 & master)
-rm -rf feeds/packages/net/v2ray-geodata
-git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/net/mosdns
-git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
-
-#安装Alist为最新版
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 20.x feeds/packages/lang/golang
-git clone https://github.com/sbwml/luci-app-alist package/alist
 
