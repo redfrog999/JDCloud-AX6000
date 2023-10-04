@@ -22,7 +22,7 @@ on:
 #    - cron: 0 16 * * *
 
 env:
-  REPO_URL: https://github.com/RavenRage/immortalwrt-mt798x-RAX3KM
+  REPO_URL: https://github.com/RavenCage/immortalwrt-mt798x-RAX3KM
   #REPO_URL: https://github.com/RavenCage/immortalwrt-mt798x-rax3000m-emmc
   #REPO_URL: https://github.com/redfrog999/immortalwrt-mt798x-rax3000m-emmc
   REPO_BRANCH: openwrt-21.02
