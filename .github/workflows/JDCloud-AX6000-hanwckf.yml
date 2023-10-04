@@ -22,7 +22,7 @@ on:
 #    - cron: 0 16 * * *
 
 env:
-  REPO_URL: https://github.com/RavenCage/immortalwrt-mt798x-baili
+  REPO_URL: https://github.com/redfrog999000/immortalwrt-mt798x-JDCAX6000
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: hanwckf/JDCloud-AX6000/.config
