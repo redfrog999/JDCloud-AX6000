@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 ###############改名字##############
-name: 3KM-CMCC-eMMC-52MHz-PSW-0306
+name: 3KM-CMCC-eMMC-52MHz-PSW-0717-0717-Hanwckf
 
 on:
   repository_dispatch:
@@ -23,11 +23,11 @@ on:
 
 env:
   #REPO_URL: https://github.com/RavenCage/immortalwrt-mt798x-RAX3KMeMMC
-  REPO_URL: https://github.com/RavenCage/immortalwrt-mt798x-rax3000m-emmc
+  REPO_URL: https://github.com/RavenCage/immortalwrt-mt798x
   #REPO_URL: https://github.com/redfrog999/immortalwrt-mt798x-rax3000m-emmc
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: hanwckf/CMCC-RAX3000M-EMMC/.config-pure
+  CONFIG_FILE: hanwckf/CMCC-RAX3000M-EMMC/.config-hanwckf
   DIY_P1_SH: hanwckf/CMCC-RAX3000M-EMMC/diy-part1.sh
   DIY_P2_SH: hanwckf/CMCC-RAX3000M-EMMC/diy-part2.sh
   SSH_ACTIONS: false
