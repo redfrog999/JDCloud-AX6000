@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 ###############改名字##############
-name: 3KM-52MHz-PSW-0717-Hanwckf
+name: 3KM-52MHz-PSW-Hanwckf
 
 on:
   repository_dispatch:
