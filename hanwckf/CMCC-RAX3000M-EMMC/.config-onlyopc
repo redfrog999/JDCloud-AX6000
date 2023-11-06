@@ -5672,12 +5672,12 @@ CONFIG_PACKAGE_luci-app-opkg=y
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray_Plugin is not set
 # end of Configuration
 
-CONFIG_PACKAGE_luci-app-passwall2=y
+# CONFIG_PACKAGE_luci-app-passwall2 is not set
 
 #
 # Configuration
 #
-CONFIG_PACKAGE_luci-app-passwall2_Iptables_Transparent_Proxy=y
+# CONFIG_PACKAGE_luci-app-passwall2_Iptables_Transparent_Proxy is not set
 # CONFIG_PACKAGE_luci-app-passwall2_Nftables_Transparent_Proxy is not set
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Brook is not set
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Haproxy is not set
@@ -5686,14 +5686,13 @@ CONFIG_PACKAGE_luci-app-passwall2_Iptables_Transparent_Proxy=y
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_NaiveProxy is not set
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Libev_Client is not set
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Libev_Server is not set
-CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Rust_Client=y
-CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Rust_Server=y
+# CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Rust_Client is not set
+# CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Rust_Server is not set
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_ShadowsocksR_Libev_Client is not set
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_ShadowsocksR_Libev_Server is not set
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Simple_Obfs is not set
-CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_SingBox=y
-CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_V2ray=y
-CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Xray=y
+# CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_SingBox is not set
+# CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Xray is not set
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_tuic_client is not set
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_V2ray_Plugin is not set
 # end of Configuration
@@ -7189,7 +7188,7 @@ CONFIG_PACKAGE_cgi-io=y
 # CONFIG_PACKAGE_gq-client is not set
 # CONFIG_PACKAGE_gq-server is not set
 # CONFIG_PACKAGE_gunicorn3 is not set
-CONFIG_PACKAGE_haproxy=y
+# CONFIG_PACKAGE_haproxy is not set
 # CONFIG_PACKAGE_halog is not set
 # CONFIG_PACKAGE_haproxy-nossl is not set
 # CONFIG_PACKAGE_kcptun-client is not set
@@ -7220,9 +7219,9 @@ CONFIG_PACKAGE_microsocks=y
 # CONFIG_PACKAGE_shadowsocks-libev-ss-rules is not set
 # CONFIG_PACKAGE_shadowsocks-libev-ss-server is not set
 # CONFIG_PACKAGE_shadowsocks-libev-ss-tunnel is not set
-CONFIG_PACKAGE_shadowsocks-rust-sslocal=y
+# CONFIG_PACKAGE_shadowsocks-rust-sslocal is not set
 # CONFIG_PACKAGE_shadowsocks-rust-ssmanager is not set
-CONFIG_PACKAGE_shadowsocks-rust-ssserver=y
+# CONFIG_PACKAGE_shadowsocks-rust-ssserver is not set
 # CONFIG_PACKAGE_shadowsocks-rust-ssservice is not set
 # CONFIG_PACKAGE_shadowsocks-rust-ssurl is not set
 # CONFIG_PACKAGE_shadowsocksr-libev-ssr-check is not set
@@ -7230,7 +7229,7 @@ CONFIG_PACKAGE_shadowsocks-rust-ssserver=y
 # CONFIG_PACKAGE_shadowsocksr-libev-ssr-nat is not set
 # CONFIG_PACKAGE_shadowsocksr-libev-ssr-redir is not set
 # CONFIG_PACKAGE_shadowsocksr-libev-ssr-server is not set
-CONFIG_PACKAGE_sing-box=y
+# CONFIG_PACKAGE_sing-box is not set
 # CONFIG_PACKAGE_sockd is not set
 # CONFIG_PACKAGE_socksify is not set
 # CONFIG_PACKAGE_spawn-fcgi is not set
@@ -7598,7 +7597,7 @@ CONFIG_PACKAGE_umdns=y
 # CONFIG_PACKAGE_usbip is not set
 # CONFIG_PACKAGE_usteer is not set
 # CONFIG_PACKAGE_uugamebooster is not set
-CONFIG_PACKAGE_v2ray-core=y
+# CONFIG_PACKAGE_v2ray-core is not set
 # CONFIG_PACKAGE_vallumd is not set
 # CONFIG_PACKAGE_verysync is not set
 CONFIG_PACKAGE_vlmcsd=y
@@ -7615,7 +7614,7 @@ CONFIG_PACKAGE_vlmcsd=y
 # CONFIG_PACKAGE_wpan-tools is not set
 # CONFIG_PACKAGE_wwan is not set
 # CONFIG_PACKAGE_xinetd is not set
-CONFIG_PACKAGE_xray-core=y
+# CONFIG_PACKAGE_xray-core is not set
 # CONFIG_PACKAGE_xray-example is not set
 # end of Network
 
