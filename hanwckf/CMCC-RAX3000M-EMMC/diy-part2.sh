@@ -29,4 +29,4 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 # Alist from sbwml
 git clone https://github.com/sbwml/luci-app-alist package/alist
-make package/alist/luci-app-alist/compile V=s # build luci-app-alist
+
