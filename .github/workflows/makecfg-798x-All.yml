@@ -10,12 +10,10 @@ on:
         description: 'SSH connection to Actions'
 
 env:
-  #REPO_URL: https://github.com/redfrog999/jdc-lede
-  #REPO_URL: https://github.com/RavenCage/immortalwrt-mt798x-JDCAX6000
-  REPO_URL: https://github.com/RavenCage/immortalwrt-mt798x
-  #REPO_URL: https://github.com/immortalwrt/immortalwrt
-  REPO_BRANCH: openwrt-21.02
-  #REPO_BRANCH: master
+  #REPO_URL: https://github.com/RavenCage/immortalwrt-mt798x
+  REPO_URL: https://github.com/immortalwrt/immortalwrt
+  #REPO_BRANCH: openwrt-21.02
+  REPO_BRANCH: master
   DEVICE_NAME: mt798x
   FILES: files
   FEEDS_CONF: feeds.conf.default
