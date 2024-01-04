@@ -5732,7 +5732,6 @@ CONFIG_PACKAGE_luci-app-diskman_INCLUDE_lsblk=y
 # CONFIG_PACKAGE_luci-app-eqos is not set
 # CONFIG_PACKAGE_luci-app-fileassistant is not set
 # CONFIG_PACKAGE_luci-app-filebrowser=y
-CONFIG_PACKAGE_luci-app-tinyfilemanager=y
 CONFIG_PACKAGE_luci-app-filetransfer=y
 CONFIG_PACKAGE_luci-app-firewall=y
 # CONFIG_PACKAGE_luci-app-frpc is not set
@@ -5836,7 +5835,7 @@ CONFIG_PACKAGE_luci-app-passwall2=y
 # Configuration
 #
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Brook is not set
-# CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Haproxy is not set
+CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Haproxy=y
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Hysteria is not set
 CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_IPv6_Nat=y
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_NaiveProxy is not set
@@ -5895,6 +5894,7 @@ CONFIG_PACKAGE_luci-app-ramfree=y
 # CONFIG_PACKAGE_luci-app-timecontrol is not set
 # CONFIG_PACKAGE_luci-app-timewol is not set
 # CONFIG_PACKAGE_luci-app-tinyproxy is not set
+CONFIG_PACKAGE_luci-app-tinyfilemanager=y
 # CONFIG_PACKAGE_luci-app-transmission is not set
 # CONFIG_PACKAGE_luci-app-travelmate is not set
 # CONFIG_PACKAGE_luci-app-trojan-server is not set
@@ -5936,9 +5936,9 @@ CONFIG_PACKAGE_luci-app-vlmcsd=y
 # CONFIG_PACKAGE_luci-app-webrestriction is not set
 # CONFIG_PACKAGE_luci-app-weburl is not set
 # CONFIG_PACKAGE_luci-app-wechatpush is not set
-CONFIG_PACKAGE_luci-app-wifischedule=y
+# CONFIG_PACKAGE_luci-app-wifischedule is not set
 # CONFIG_PACKAGE_luci-app-wireguard is not set
-CONFIG_PACKAGE_luci-app-wol=y
+# CONFIG_PACKAGE_luci-app-wol is not set
 # CONFIG_PACKAGE_luci-app-xinetd is not set
 # CONFIG_PACKAGE_luci-app-xlnetacc is not set
 # CONFIG_PACKAGE_luci-app-yggdrasil is not set
@@ -6053,7 +6053,6 @@ CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-diskman-pl is not set
 CONFIG_PACKAGE_luci-i18n-diskman-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-diskman-zh-tw is not set
-CONFIG_PACKAGE_luci-i18n-eqos-mtk-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-filebrowser-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-filetransfer-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-firewall-ar is not set
@@ -6124,8 +6123,6 @@ CONFIG_PACKAGE_luci-i18n-guest-wifi-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-ksmbd-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-ksmbd-zh-tw is not set
 # CONFIG_PACKAGE_luci-i18n-mosdns-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-eqos-mtk-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-mtk-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-nlbwmon-ar is not set
 # CONFIG_PACKAGE_luci-i18n-nlbwmon-bg is not set
 # CONFIG_PACKAGE_luci-i18n-nlbwmon-bn is not set
@@ -6227,7 +6224,11 @@ CONFIG_PACKAGE_luci-i18n-ramfree-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-ttyd-vi is not set
 CONFIG_PACKAGE_luci-i18n-ttyd-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-ttyd-zh-tw is not set
+CONFIG_PACKAGE_luci-i18n-eqos-mtk-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-mtwifi-cfg-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-turboacc-mtk-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-tinyfilemanager-zh-cn=y
+# CONFIG_PACKAGE_luci-i18n-tinyfilemanager-zh-tw is not set
 # CONFIG_PACKAGE_luci-i18n-upnp-ar is not set
 # CONFIG_PACKAGE_luci-i18n-upnp-bg is not set
 # CONFIG_PACKAGE_luci-i18n-upnp-bn is not set
@@ -6297,7 +6298,7 @@ CONFIG_PACKAGE_luci-i18n-vlmcsd-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-wifischedule-uk is not set
 # CONFIG_PACKAGE_luci-i18n-wifischedule-vi is not set
 # CONFIG_PACKAGE_luci-i18n-wifischedule-yue is not set
-CONFIG_PACKAGE_luci-i18n-wifischedule-zh-cn=y
+# CONFIG_PACKAGE_luci-i18n-wifischedule-zh-cn is not set
 # CONFIG_PACKAGE_luci-i18n-wifischedule-zh-tw is not set
 # CONFIG_PACKAGE_luci-i18n-wol-ar is not set
 # CONFIG_PACKAGE_luci-i18n-wol-bg is not set
@@ -7395,7 +7396,7 @@ CONFIG_PACKAGE_shadowsocks-rust-sslocal=y
 # CONFIG_PACKAGE_shadowsocksr-libev-ssr-nat is not set
 # CONFIG_PACKAGE_shadowsocksr-libev-ssr-redir is not set
 # CONFIG_PACKAGE_shadowsocksr-libev-ssr-server is not set
-# CONFIG_PACKAGE_sing-box is not set
+CONFIG_PACKAGE_sing-box=y
 
 #
 # Customizing build tags
@@ -7448,7 +7449,7 @@ CONFIG_PACKAGE_uhttpd-mod-ubus=y
 # CONFIG_PACKAGE_pixiewps is not set
 # CONFIG_PACKAGE_reaver is not set
 # CONFIG_PACKAGE_wavemon is not set
-CONFIG_PACKAGE_wifischedule=y
+# CONFIG_PACKAGE_wifischedule is not set
 # end of Wireless
 
 #
