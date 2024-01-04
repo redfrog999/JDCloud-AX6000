@@ -27,62 +27,91 @@ find ./ | grep Makefile | grep mosdns | xargs rm -f
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
-# Build Tinyfilemanager
-git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/luci-app-tinyfilemanager.git package/luci-app-tinyfilemanager
+#修改Tiny Filemanager汉化
+if [ -d *"tinyfilemanager"* ]; then
+	PO_FILE="./luci-app-tinyfilemanager/po/zh_Hans/tinyfilemanager.po"
+	sed -i '/msgid "Tiny File Manager"/{n; s/msgstr.*/msgstr "文件管理器"/}' $PO_FILE
+	sed -i 's/启用用户验证/用户验证/g;s/家目录/初始目录/g;s/Favicon 路径/收藏夹图标路径/g' $PO_FILE
 
-#!/bin/bash
+	echo "tinyfilemanager date has been updated!"
+fi
 
-#更新软件包
-UPDATE_PACKAGE() {
-	local PKG_NAME=$1
-	local PKG_REPO=$2
-	local PKG_BRANCH=$3
-	local PKG_SPECIAL=$4
-	local REPO_NAME=$(echo $PKG_REPO | cut -d '/' -f 2)
+#预置HomeProxy数据
+if [ -d *"homeproxy"* ]; then
+	HP_PATCH="../homeproxy/root/etc/homeproxy/resources"
 
-	rm -rf $(find ../feeds/luci/ -type d -iname "*$PKG_NAME*" -prune)
+	UPDATE_RESOURCES() {
+		local RES_TYPE=$1
+		local RES_REPO=$(echo "$2" | tr '[:upper:]' '[:lower:]')
+		local RES_BRANCH=$3
+		local RES_FILE=$4
+		local RES_EXT=${4##*.}
+		local RES_DEPTH=${5:-1}
 
-	git clone --depth=1 --single-branch --branch $PKG_BRANCH "https://github.com/$PKG_REPO.git"
+		git clone -q --depth=$RES_DEPTH --single-branch --branch $RES_BRANCH "https://github.com/$RES_REPO.git" ./$RES_TYPE/
 
-	if [[ $PKG_SPECIAL == "pkg" ]]; then
-		cp -rf $(find ./$REPO_NAME/ -type d -iname "*$PKG_NAME*" -prune) ./
-		rm -rf ./$REPO_NAME
-	elif [[ $PKG_SPECIAL == "name" ]]; then
-		mv -f $REPO_NAME $PKG_NAME
-	fi
-}
+		cd ./$RES_TYPE/
 
-UPDATE_PACKAGE "tinyfilemanager" "muink/luci-app-tinyfilemanager" "master"
-
-UPDATE_PACKAGE "design" "gngpp/luci-theme-design" "js"
-UPDATE_PACKAGE "design-config" "gngpp/luci-app-design-config" "master"
-UPDATE_PACKAGE "argon" "jerrykuku/luci-theme-argon" "master"
-UPDATE_PACKAGE "argon-config" "jerrykuku/luci-app-argon-config" "master"
-
-UPDATE_PACKAGE "passwall" "xiaorouji/openwrt-passwall" "main"
-UPDATE_PACKAGE "passwall2" "xiaorouji/openwrt-passwall2" "main"
-UPDATE_PACKAGE "passwall-packages" "xiaorouji/openwrt-passwall-packages" "main"
-UPDATE_PACKAGE "helloworld" "fw876/helloworld" "master"
-UPDATE_PACKAGE "openclash" "vernesong/OpenClash" "dev"
-UPDATE_PACKAGE "mosdns" "sbwml/luci-app-mosdns" "v5"
-
-#更新软件包版本
-UPDATE_VERSION() {
-	local PKG_NAME=$1
-	local NEW_VER=$2
-	local NEW_HASH=$3
-	local PKG_FILE=$(find ../feeds/packages/*/$PKG_NAME/ -type f -name "Makefile" 2>/dev/null)
-
-	if [ -f "$PKG_FILE" ]; then
-		local OLD_VER=$(grep -Po "PKG_VERSION:=\K.*" $PKG_FILE)
-		if dpkg --compare-versions "$OLD_VER" lt "$NEW_VER"; then
-			sed -i "s/PKG_VERSION:=.*/PKG_VERSION:=$NEW_VER/g" $PKG_FILE
-			sed -i "s/PKG_HASH:=.*/PKG_HASH:=$NEW_HASH/g" $PKG_FILE
-			echo "$PKG_NAME ver has updated!"
-		else
-			echo "$PKG_NAME ver is latest!"
+		if [[ $RES_EXT == "txt" ]]; then
+			echo $(git log -1 --pretty=format:'%s' -- $RES_FILE | grep -o "[0-9]*") > "$RES_TYPE".ver
+			mv -f $RES_FILE "$RES_TYPE"."$RES_EXT"
+		elif [[ $RES_EXT == "zip" ]]; then
+			local REPO_ID=$(echo -n "$RES_REPO" | md5sum | cut -d ' ' -f 1)
+			local REPO_VER=$(git log -1 --pretty=format:'%s' | cut -d ' ' -f 1)
+			echo "{ \"$REPO_ID\": { \"repo\": \"$(echo $RES_REPO | sed 's/\//\\\//g')\", \"version\": \"$REPO_VER\" } }" > "$RES_TYPE".ver
+			curl -sfL -O "https://github.com/$RES_REPO/archive/$RES_FILE"
+			mv -f $RES_FILE $HP_PATCH/"${RES_REPO//\//_}"."$RES_EXT"
+		elif [[ $RES_EXT == "db" ]]; then
+			local RES_VER=$(git tag | tail -n 1)
+			echo $RES_VER > "$RES_TYPE".ver
+			curl -sfL -O "https://github.com/$RES_REPO/releases/download/$RES_VER/$RES_FILE"
 		fi
-	else
-		echo "$PKG_NAME not found!"
-	fi
-}
+
+		cp -f "$RES_TYPE".* $HP_PATCH/
+		chmod +x $HP_PATCH/*
+
+		cd .. && rm -rf ./$RES_TYPE/
+	}
+
+	UPDATE_RESOURCES "china_ip4" "1715173329/IPCIDR-CHINA" "master" "ipv4.txt" "5"
+	UPDATE_RESOURCES "china_ip6" "1715173329/IPCIDR-CHINA" "master" "ipv6.txt" "5"
+	UPDATE_RESOURCES "gfw_list" "Loyalsoldier/v2ray-rules-dat" "release" "gfw.txt"
+	UPDATE_RESOURCES "china_list" "Loyalsoldier/v2ray-rules-dat" "release" "direct-list.txt"
+	#UPDATE_RESOURCES "geoip" "1715173329/sing-geoip" "master" "geoip.db"
+	#UPDATE_RESOURCES "geosite" "1715173329/sing-geosite" "master" "geosite.db"
+	#UPDATE_RESOURCES "clash_dashboard" "MetaCubeX/metacubexd" "gh-pages" "gh-pages.zip"
+
+	echo "homeproxy date has been updated!"
+fi
+
+#预置OpenClash内核和数据
+if [ -d *"OpenClash"* ]; then
+	CORE_VER="https://raw.githubusercontent.com/vernesong/OpenClash/core/dev/core_version"
+	CORE_TYPE=$(echo $WRT_TARGET | egrep -iq "64|86" && echo "amd64" || echo "arm64")
+	CORE_TUN_VER=$(curl -sfL $CORE_VER | sed -n "2{s/\r$//;p;q}")
+
+	CORE_DEV="https://github.com/vernesong/OpenClash/raw/core/dev/dev/clash-linux-$CORE_TYPE.tar.gz"
+	CORE_MATE="https://github.com/vernesong/OpenClash/raw/core/dev/meta/clash-linux-$CORE_TYPE.tar.gz"
+	CORE_TUN="https://github.com/vernesong/OpenClash/raw/core/dev/premium/clash-linux-$CORE_TYPE-$CORE_TUN_VER.gz"
+
+	GEO_MMDB="https://github.com/alecthw/mmdb_china_ip_list/raw/release/lite/Country.mmdb"
+	GEO_SITE="https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/geosite.dat"
+	GEO_IP="https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/geoip.dat"
+	GEO_META="https://github.com/MetaCubeX/meta-rules-dat/raw/release/geoip.metadb"
+
+	cd ./OpenClash/luci-app-openclash/root/etc/openclash/
+
+	curl -sfL -o Country.mmdb $GEO_MMDB
+	curl -sfL -o GeoSite.dat $GEO_SITE
+	curl -sfL -o GeoIP.dat $GEO_IP
+	curl -sfL -o GeoIP.metadb $GEO_META
+
+	mkdir ./core/ && cd ./core/
+
+	curl -sfL -o meta.tar.gz $CORE_MATE && tar -zxf meta.tar.gz && mv -f clash clash_meta
+	curl -sfL -o tun.gz $CORE_TUN && gzip -d tun.gz && mv -f tun clash_tun
+	curl -sfL -o dev.tar.gz $CORE_DEV && tar -zxf dev.tar.gz
+
+	chmod +x ./clash* && rm -rf ./*.gz
+
+	echo "openclash date has been updated!"
