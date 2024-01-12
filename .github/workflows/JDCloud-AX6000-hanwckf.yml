@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 ###############改名字##############
-name: JDCloud-AX6000-hanwckf
+name: JDCloud03-Tail.Smartdns.ADG-hanwckf
 
 on:
   repository_dispatch:
