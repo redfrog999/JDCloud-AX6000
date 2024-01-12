@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 ###############改名字##############
-name: 3KM-52MHz-Tail.OPC-Hanwckf
+name: 3KM-52MHz-Tail.Smartdns.ADG-Hanwckf
 
 on:
   repository_dispatch:
