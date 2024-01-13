@@ -83,7 +83,7 @@ jobs:
     - name: 加载 Custom Packages
       run: |
         chmod +x $PACKAGES_SH
-       cd /workdir/openwrt/package/
+        cd /workdir/openwrt/package/
         $GITHUB_WORKSPACE/$PACKAGES_SH     
 
     - name: 加载 Custom Handles
