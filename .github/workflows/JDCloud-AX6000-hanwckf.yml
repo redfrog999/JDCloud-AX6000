@@ -78,13 +78,17 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
-    - name: Custom Packages
+    - name: 加载 Custom Packages
       run: |
         chmod +x $PACKAGES_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$PACKAGES_SH     
+
+    - name: 加载 Custom Handles
+      run: |
         chmod +x $HANDLES_SH
         cd openwrt
-        $GITHUB_WORKSPACE/$PACKAGES_SH
-        $GITHUB_WORKSPACE/$HANDLES_SH
+        $GITHUB_WORKSPACE/$HANDLES_SH 
         
     - name: 加载config & DIY_P2_SH
       run: |
