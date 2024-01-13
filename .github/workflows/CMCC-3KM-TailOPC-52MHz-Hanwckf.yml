@@ -80,7 +80,7 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
-   - name: 加载Custom Packages
+    - name: 加载Custom Packages
       run: |
         chmod +x $PACKAGES_SH
         chmod +x $HANDLES_SH
@@ -88,21 +88,21 @@ jobs:
         $GITHUB_WORKSPACE/$PACKAGES_SH
         $GITHUB_WORKSPACE/$HANDLES_SH
         
-   - name: 加载config & DIY_P2_SH
+    - name: 加载config & DIY_P2_SH
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
         
-   - name: SSH链接管理
+    - name: SSH链接管理
       uses: P3TERX/ssh2actions@v1.0.0
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
       env:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
-   - name: 下载安装包
+    - name: 下载安装包
       id: package
       run: |
         cd openwrt
@@ -111,7 +111,7 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
         
-   - name: 编译固件
+    - name: 编译固件
       id: compile
       run: |
         cd openwrt
@@ -124,11 +124,11 @@ jobs:
         echo "FILE_DATE=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
         
-   - name: 查看磁盘使用情况
+    - name: 查看磁盘使用情况
       if: (!cancelled())
       run: df -hT
 
-   - name: 整理文件并重命名
+    - name: 整理文件并重命名
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: | 
@@ -146,7 +146,7 @@ jobs:
         name: ${{ env.FILE_DATE }}-${{ env.OPENWRT_NAME }}-${{ env.DEVICE_NAME }}
         path: ${{ env.FIRMWARE }}
 
-   - name: 生成release标签
+    - name: 生成release标签
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
@@ -156,7 +156,7 @@ jobs:
         echo "📥 固件下载" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
         
-   - name: 发布至release
+    - name: 发布至release
       uses: softprops/action-gh-release@v1
       if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
