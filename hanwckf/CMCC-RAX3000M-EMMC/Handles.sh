@@ -82,7 +82,7 @@ if [ -d *"OpenClash"* ]; then
 	mkdir ./core/ && cd ./core/
 
 	curl -sfL -o meta.tar.gz $CORE_MATE && tar -zxf meta.tar.gz && mv -f clash clash_meta
-	#curl -sfL -o tun.gz $CORE_TUN && gzip -d tun.gz && mv -f tun clash_tun
+	curl -sfL -o tun.gz $CORE_TUN && gzip -d tun.gz && mv -f tun clash_tun
 	curl -sfL -o dev.tar.gz $CORE_DEV && tar -zxf dev.tar.gz
 
 	chmod +x ./clash* && rm -rf ./*.gz
