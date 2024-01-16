@@ -32,7 +32,7 @@ env:
   PACKAGES_SH: hanwckf/Redmi-AX6000/Packages.sh
   SSH_ACTIONS: false
   UPLOAD_FIRMWARE: true
-  UPLOAD_RELEASE: true
+  UPLOAD_RELEASE: false
   TZ: Asia/Shanghai
   ###############改名字##############
   OPENWRT_NAME: hanwckf
