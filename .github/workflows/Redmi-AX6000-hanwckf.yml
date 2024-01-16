@@ -22,7 +22,7 @@ on:
 #    - cron: 0 16 * * *
 
 env:
-  REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
+  REPO_URL: https://github.com/RavenCage/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: hanwckf/Redmi-AX6000/.config
@@ -75,7 +75,19 @@ jobs:
         cd openwrt
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-      
+
+    - name: 加载 Custom Packages
+      run: |
+        chmod +x $PACKAGES_SH
+        cd /workdir/openwrt/package/
+        $GITHUB_WORKSPACE/$PACKAGES_SH     
+
+    - name: 加载 Custom Handles
+      run: |
+        chmod +x $HANDLES_SH
+        cd /workdir/openwrt/package/
+        $GITHUB_WORKSPACE/$HANDLES_SH 
+          
     - name: 加载config & DIY_P2_SH
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
