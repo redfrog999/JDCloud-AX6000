@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 ###############改名字##############
-name: JDCloud03-Tail.Smartdns.ADG.Mos-hanwckf
+name: JDCloud03-Tail.Smartdns.Mos-hanwckf
 
 on:
   repository_dispatch:
