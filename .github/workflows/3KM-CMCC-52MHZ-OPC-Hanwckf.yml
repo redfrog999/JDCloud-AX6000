@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 ###############改名字##############
-name: 3KMe-52MHz-Smartdns.Mos-Hanwckf
+name: 237-3KMe-52MHz-Smartdns.Mos
 
 on:
   repository_dispatch:
@@ -23,7 +23,7 @@ on:
 
 env:
   #REPO_URL: https://github.com/redfrog999/immortalwrt-mt798x
-  REPO_URL: https://github.com/RavenCage/immortalwrt-mt798x
+  REPO_URL: https://github.com/redfrog999000/237-immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: hanwckf/CMCC-RAX3000M-EMMC/.config-onlyopc
