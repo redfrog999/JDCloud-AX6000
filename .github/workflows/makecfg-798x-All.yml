@@ -10,15 +10,15 @@ on:
         description: 'SSH connection to Actions'
 
 env:
-  REPO_URL: https://github.com/RavenCage/immortalwrt-mt798x
+  REPO_URL: https://github.com/redfrog999000/237-immortalwrt-mt798x
   #REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: openwrt-21.02
   #REPO_BRANCH: master
   DEVICE_NAME: mt798x
   FILES: files
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: hanwckf/JDCloud-AX6000/.00config
-  #CONFIG_FILE: hanwckf/CMCC-RAX3000M-EMMC/.config-tailopc
+  #CONFIG_FILE: hanwckf/JDCloud-AX6000/.00config
+  CONFIG_FILE: hanwckf/CMCC-RAX3000M-EMMC/.config-tailopc
   DIY_P1_SH: hanwckf/JDCloud-AX6000/diy-part1.sh
   #DIY_P1_SH: hanwckf/CMCC-RAX3000M-EMMC/diy-part1.sh
   DIY_P2_SH: hanwckf/JDCloud-AX6000/diy-part2.sh
