@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 ###############改名字##############
-name: 237-3KMe-52M-Tail.Smartdns.Mos
+name: 237-3KMe-52M-Docker.Smartdns.Mos
 
 on:
   repository_dispatch:
