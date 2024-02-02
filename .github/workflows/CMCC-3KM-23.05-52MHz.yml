@@ -81,7 +81,7 @@ jobs:
 
     - name: 更新smartdns、netdata
       run: |
-        WORKINGDIR="$OPENWRT_ROOT_PATH/feeds/packages/net/smartdns"
+        WORKINGDIR="$OPENWRT_ROOT_PATH/feeds/kenzo/smartdns"
         mkdir $WORKINGDIR -p
         rm $WORKINGDIR/* -fr
         curl -s -L --retry 6 https://github.com/pymumu/openwrt-smartdns/archive/master.zip -o $WORKINGDIR/master.zip
