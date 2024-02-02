@@ -26,7 +26,7 @@ env:
   #REPO_URL: https://github.com/redfrog999000/237-immortalwrt-mt798x
   REPO_BRANCH: openwrt-23.05
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: hanwckf/CMCC-RAX3000M-EMMC/.config-tailopc
+  CONFIG_FILE: hanwckf/CMCC-RAX3000M-EMMC/.config-23.05
   DIY_P1_SH: hanwckf/CMCC-RAX3000M-EMMC/diy-part1.sh
   DIY_P2_SH: hanwckf/CMCC-RAX3000M-EMMC/diy-part2.sh
   PACKAGES_SH: hanwckf/CMCC-RAX3000M-EMMC/Packages.sh
