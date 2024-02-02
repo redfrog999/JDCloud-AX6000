@@ -22,8 +22,8 @@ on:
 #    - cron: 0 16 * * *
 
 env:
-  #REPO_URL: https://github.com/RavenCage/immortalwrt
-  REPO_URL: https://github.com/redfrog999000/237-immortalwrt-mt798x
+  REPO_URL: https://github.com/RavenCage/immortalwrt
+  #REPO_URL: https://github.com/redfrog999000/237-immortalwrt-mt798x
   REPO_BRANCH: openwrt-23.05
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: hanwckf/CMCC-RAX3000M-EMMC/.config-2305
