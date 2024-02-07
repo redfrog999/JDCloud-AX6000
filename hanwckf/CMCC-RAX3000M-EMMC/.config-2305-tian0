@@ -6061,7 +6061,7 @@ CONFIG_PACKAGE_luci-app-diskman_INCLUDE_lsblk=y
 # CONFIG_PACKAGE_luci-app-eqos is not set
 # CONFIG_PACKAGE_luci-app-example is not set
 # CONFIG_PACKAGE_luci-app-fileassistant is not set
-CONFIG_PACKAGE_luci-app-filebrowser=y
+# CONFIG_PACKAGE_luci-app-filebrowser is not set
 CONFIG_PACKAGE_luci-app-tinyfilemanager=y
 CONFIG_PACKAGE_luci-app-filetransfer=y
 CONFIG_PACKAGE_luci-app-firewall=y
@@ -6395,7 +6395,7 @@ CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-diskman-pl is not set
 CONFIG_PACKAGE_luci-i18n-diskman-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-diskman-zh-tw is not set
-CONFIG_PACKAGE_luci-i18n-filebrowser-zh-cn=y
+# CONFIG_PACKAGE_luci-i18n-filebrowser-zh-cn is not set
 # CONFIG_PACKAGE_luci-i18n-firewall-ar is not set
 # CONFIG_PACKAGE_luci-i18n-firewall-bg is not set
 # CONFIG_PACKAGE_luci-i18n-firewall-bn is not set
@@ -7491,7 +7491,7 @@ CONFIG_WPA_MBO_SUPPORT=y
 # CONFIG_PACKAGE_wpad-mesh-openssl is not set
 # CONFIG_PACKAGE_wpad-mesh-wolfssl is not set
 # CONFIG_PACKAGE_wpad-mini is not set
-CONFIG_PACKAGE_wpad-openssl=y
+# CONFIG_PACKAGE_wpad-openssl is not set
 # CONFIG_PACKAGE_wpad-wolfssl is not set
 # end of WirelessAPD
 
@@ -8407,7 +8407,7 @@ CONFIG_PACKAGE_coreutils-nohup=y
 # CONFIG_PACKAGE_extract is not set
 # CONFIG_PACKAGE_fdt-utils is not set
 # CONFIG_PACKAGE_file is not set
-CONFIG_PACKAGE_filebrowser=y
+# CONFIG_PACKAGE_filebrowser is not set
 # CONFIG_PACKAGE_findutils is not set
 # CONFIG_PACKAGE_findutils-find is not set
 # CONFIG_PACKAGE_findutils-locate is not set
