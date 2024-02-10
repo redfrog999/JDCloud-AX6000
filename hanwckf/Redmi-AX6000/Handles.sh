@@ -63,7 +63,7 @@ if [ -d *"OpenClash"* ]; then
 	CORE_TYPE=$(echo $WRT_TARGET | egrep -iq "64|86" && echo "amd64" || echo "arm64")
 	CORE_TUN_VER=$(curl -sfL $CORE_VER | sed -n "2{s/\r$//;p;q}")
 
-	CORE_MASTER="https://github.com/vernesong/OpenClash/raw/core/master/dev/clash-linux-$CORE_TYPE.tar.gz"
+	#CORE_MASTER="https://github.com/vernesong/OpenClash/raw/core/master/dev/clash-linux-$CORE_TYPE.tar.gz"
 	CORE_MATE="https://github.com/vernesong/OpenClash/raw/core/master/meta/clash-linux-$CORE_TYPE.tar.gz"
 	#CORE_TUN="https://github.com/vernesong/OpenClash/raw/core/master/premium/clash-linux-$CORE_TYPE-$CORE_TUN_VER.gz"
 
