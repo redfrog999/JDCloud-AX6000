@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 ###############改名字##############
-name: 237-3KMe-52M-SSL*3.HW-PSW1&2
+name: 237-3KMe-52M-SSL*3.HW-PSW
 
 on:
   repository_dispatch:
