@@ -4994,7 +4994,7 @@ CONFIG_GNUTLS_ANON=y
 # end of Configuration
 
 # CONFIG_PACKAGE_libgnutls-dane is not set
-CONFIG_PACKAGE_libmbedtls=y
+# CONFIG_PACKAGE_libmbedtls is not set
 
 #
 # Option details in source code: include/mbedtls/mbedtls_config.h
