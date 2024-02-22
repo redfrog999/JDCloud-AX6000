@@ -1614,7 +1614,7 @@ CONFIG_BUSYBOX_DEFAULT_FEATURE_IPC_SYSLOG_BUFFER_SIZE=0
 # CONFIG_BUSYBOX_DEFAULT_FEATURE_KMSG_SYSLOG is not set
 # CONFIG_PACKAGE_busybox-selinux is not set
 CONFIG_PACKAGE_ca-bundle=y
-CONFIG_PACKAGE_ca-certificates=y
+# CONFIG_PACKAGE_ca-certificates is not set
 # CONFIG_PACKAGE_dnsmasq is not set
 # CONFIG_PACKAGE_dnsmasq-dhcpv6 is not set
 CONFIG_PACKAGE_dnsmasq-full=y
@@ -2713,7 +2713,7 @@ CONFIG_PACKAGE_kmod-slhc=y
 # CONFIG_PACKAGE_kmod-tcp-bbr is not set
 # CONFIG_PACKAGE_kmod-tcp-hybla is not set
 # CONFIG_PACKAGE_kmod-tcp-scalable is not set
-CONFIG_PACKAGE_kmod-tls=y
+# CONFIG_PACKAGE_kmod-tls is not set
 # CONFIG_PACKAGE_kmod-trelay is not set
 CONFIG_PACKAGE_kmod-tun=y
 # CONFIG_PACKAGE_kmod-veth is not set
@@ -2895,7 +2895,7 @@ CONFIG_PACKAGE_kmod-usb3=y
 # CONFIG_PACKAGE_kmod-usbip is not set
 # CONFIG_PACKAGE_kmod-usbip-client is not set
 # CONFIG_PACKAGE_kmod-usbip-server is not set
-# CONFIG_PACKAGE_kmod-usbmon is not set
+CONFIG_PACKAGE_kmod-usbmon=y
 # end of USB Support
 
 #
@@ -3574,116 +3574,7 @@ CONFIG_NODEJS_NPM_CACHE_DIR=""
 #
 # Ruby
 #
-CONFIG_PACKAGE_ruby=y
-
-#
-# Standard Library
-#
-# CONFIG_PACKAGE_ruby-stdlib is not set
-# CONFIG_PACKAGE_ruby-abbrev is not set
-# CONFIG_PACKAGE_ruby-base64 is not set
-# CONFIG_PACKAGE_ruby-benchmark is not set
-CONFIG_PACKAGE_ruby-bigdecimal=y
-# CONFIG_PACKAGE_ruby-bundler is not set
-# CONFIG_PACKAGE_ruby-cgi is not set
-# CONFIG_PACKAGE_ruby-continuation is not set
-# CONFIG_PACKAGE_ruby-coverage is not set
-# CONFIG_PACKAGE_ruby-csv is not set
-CONFIG_PACKAGE_ruby-date=y
-# CONFIG_PACKAGE_ruby-debug is not set
-# CONFIG_PACKAGE_ruby-delegate is not set
-# CONFIG_PACKAGE_ruby-dev is not set
-# CONFIG_PACKAGE_ruby-did-you-mean is not set
-CONFIG_PACKAGE_ruby-digest=y
-# CONFIG_RUBY_DIGEST_USE_OPENSSL is not set
-# CONFIG_PACKAGE_ruby-drb is not set
-CONFIG_PACKAGE_ruby-enc=y
-# CONFIG_PACKAGE_ruby-enc-extra is not set
-# CONFIG_PACKAGE_ruby-english is not set
-# CONFIG_PACKAGE_ruby-erb is not set
-# CONFIG_PACKAGE_ruby-error_highlight is not set
-# CONFIG_PACKAGE_ruby-etc is not set
-# CONFIG_PACKAGE_ruby-expect is not set
-# CONFIG_PACKAGE_ruby-fcntl is not set
-# CONFIG_PACKAGE_ruby-fiddle is not set
-# CONFIG_PACKAGE_ruby-fileutils is not set
-# CONFIG_PACKAGE_ruby-find is not set
-CONFIG_PACKAGE_ruby-forwardable=y
-# CONFIG_PACKAGE_ruby-gems is not set
-# CONFIG_PACKAGE_ruby-getoptlong is not set
-# CONFIG_PACKAGE_ruby-io-console is not set
-# CONFIG_PACKAGE_ruby-io-nonblock is not set
-# CONFIG_PACKAGE_ruby-io-wait is not set
-# CONFIG_PACKAGE_ruby-ipaddr is not set
-# CONFIG_PACKAGE_ruby-irb is not set
-# CONFIG_PACKAGE_ruby-json is not set
-# CONFIG_PACKAGE_ruby-logger is not set
-# CONFIG_PACKAGE_ruby-matrix is not set
-# CONFIG_PACKAGE_ruby-minitest is not set
-# CONFIG_PACKAGE_ruby-mjit is not set
-# CONFIG_PACKAGE_ruby-mkmf is not set
-# CONFIG_PACKAGE_ruby-monitor is not set
-# CONFIG_PACKAGE_ruby-mutex_m is not set
-# CONFIG_PACKAGE_ruby-net-ftp is not set
-# CONFIG_PACKAGE_ruby-net-http is not set
-# CONFIG_PACKAGE_ruby-net-imap is not set
-# CONFIG_PACKAGE_ruby-net-pop is not set
-# CONFIG_PACKAGE_ruby-net-protocol is not set
-# CONFIG_PACKAGE_ruby-net-smtp is not set
-# CONFIG_PACKAGE_ruby-nkf is not set
-# CONFIG_PACKAGE_ruby-objspace is not set
-# CONFIG_PACKAGE_ruby-observer is not set
-# CONFIG_PACKAGE_ruby-open-uri is not set
-# CONFIG_PACKAGE_ruby-open3 is not set
-# CONFIG_PACKAGE_ruby-openssl is not set
-# CONFIG_PACKAGE_ruby-optparse is not set
-# CONFIG_PACKAGE_ruby-ostruct is not set
-# CONFIG_PACKAGE_ruby-pathname is not set
-# CONFIG_PACKAGE_ruby-powerassert is not set
-# CONFIG_PACKAGE_ruby-pp is not set
-# CONFIG_PACKAGE_ruby-prettyprint is not set
-# CONFIG_PACKAGE_ruby-prime is not set
-CONFIG_PACKAGE_ruby-pstore=y
-CONFIG_PACKAGE_ruby-psych=y
-# CONFIG_PACKAGE_ruby-pty is not set
-# CONFIG_PACKAGE_ruby-racc is not set
-# CONFIG_PACKAGE_ruby-rake is not set
-# CONFIG_PACKAGE_ruby-random_formatter is not set
-# CONFIG_PACKAGE_ruby-rbconfig is not set
-# CONFIG_PACKAGE_ruby-rbs is not set
-# CONFIG_PACKAGE_ruby-rdoc is not set
-# CONFIG_PACKAGE_ruby-readline is not set
-# CONFIG_PACKAGE_ruby-readline-ext is not set
-# CONFIG_PACKAGE_ruby-reline is not set
-# CONFIG_PACKAGE_ruby-resolv is not set
-# CONFIG_PACKAGE_ruby-resolv-replace is not set
-# CONFIG_PACKAGE_ruby-rexml is not set
-# CONFIG_PACKAGE_ruby-rinda is not set
-# CONFIG_PACKAGE_ruby-ripper is not set
-# CONFIG_PACKAGE_ruby-rss is not set
-# CONFIG_PACKAGE_ruby-ruby2_keywords is not set
-# CONFIG_PACKAGE_ruby-securerandom is not set
-# CONFIG_PACKAGE_ruby-set is not set
-# CONFIG_PACKAGE_ruby-shellwords is not set
-# CONFIG_PACKAGE_ruby-singleton is not set
-# CONFIG_PACKAGE_ruby-socket is not set
-CONFIG_PACKAGE_ruby-stringio=y
-# CONFIG_PACKAGE_ruby-strscan is not set
-# CONFIG_PACKAGE_ruby-syntax_suggest is not set
-# CONFIG_PACKAGE_ruby-syslog is not set
-# CONFIG_PACKAGE_ruby-tempfile is not set
-# CONFIG_PACKAGE_ruby-testunit is not set
-# CONFIG_PACKAGE_ruby-time is not set
-# CONFIG_PACKAGE_ruby-timeout is not set
-# CONFIG_PACKAGE_ruby-tmpdir is not set
-# CONFIG_PACKAGE_ruby-tsort is not set
-# CONFIG_PACKAGE_ruby-typeprof is not set
-# CONFIG_PACKAGE_ruby-un is not set
-# CONFIG_PACKAGE_ruby-unicodenormalize is not set
-# CONFIG_PACKAGE_ruby-uri is not set
-# CONFIG_PACKAGE_ruby-weakref is not set
-CONFIG_PACKAGE_ruby-yaml=y
-# CONFIG_PACKAGE_ruby-zlib is not set
+# CONFIG_PACKAGE_ruby is not set
 # end of Ruby
 
 #
@@ -4217,7 +4108,7 @@ CONFIG_PACKAGE_libfuse=y
 #
 # Languages
 #
-CONFIG_PACKAGE_libyaml=y
+# CONFIG_PACKAGE_libyaml is not set
 # end of Languages
 
 #
@@ -4369,7 +4260,7 @@ CONFIG_PACKAGE_libopenssl-conf=y
 # CONFIG_PACKAGE_libopenssl-devcrypto is not set
 # CONFIG_PACKAGE_libopenssl-gost_engine is not set
 CONFIG_PACKAGE_libopenssl-legacy=y
-CONFIG_PACKAGE_libwolfssl=m
+# CONFIG_PACKAGE_libwolfssl is not set
 
 #
 # wolfSSL Library Configuration
@@ -4382,22 +4273,13 @@ CONFIG_WOLFSSL_HAS_CERTGEN=y
 CONFIG_WOLFSSL_HAS_TLSV10=y
 CONFIG_WOLFSSL_HAS_TLSV13=y
 CONFIG_WOLFSSL_HAS_SESSION_TICKET=y
-CONFIG_WOLFSSL_HAS_DTLS=y
+# CONFIG_WOLFSSL_HAS_DTLS is not set
 CONFIG_WOLFSSL_HAS_OCSP=y
 CONFIG_WOLFSSL_HAS_WPAS=y
 CONFIG_WOLFSSL_HAS_ECC25519=y
 # CONFIG_WOLFSSL_HAS_ECC448 is not set
 CONFIG_WOLFSSL_HAS_OPENVPN=y
 CONFIG_WOLFSSL_ALT_NAMES=y
-
-#
-# Hardware Acceleration does not apply to libwolfsslcpu-crypto
-#
-CONFIG_WOLFSSL_HAS_NO_HW=y
-# CONFIG_WOLFSSL_HAS_AFALG is not set
-# CONFIG_WOLFSSL_HAS_DEVCRYPTO_CBC is not set
-# CONFIG_WOLFSSL_HAS_DEVCRYPTO_AES is not set
-# CONFIG_WOLFSSL_HAS_DEVCRYPTO_FULL is not set
 # end of wolfSSL Library Configuration
 
 CONFIG_PACKAGE_libwolfsslcpu-crypto=y
@@ -4507,8 +4389,7 @@ CONFIG_PACKAGE_libblobmsg-json=y
 CONFIG_PACKAGE_libbpf=y
 # CONFIG_PACKAGE_libbsd is not set
 CONFIG_PACKAGE_libcap=y
-CONFIG_PACKAGE_libcap-bin=y
-CONFIG_PACKAGE_libcap-bin-capsh-shell="/bin/sh"
+# CONFIG_PACKAGE_libcap-bin is not set
 # CONFIG_PACKAGE_libcap-ng is not set
 # CONFIG_PACKAGE_libcares is not set
 # CONFIG_PACKAGE_libcbor is not set
@@ -4786,7 +4667,7 @@ CONFIG_PACKAGE_libreadline=y
 # CONFIG_PACKAGE_libroxml is not set
 # CONFIG_PACKAGE_librrd1 is not set
 # CONFIG_PACKAGE_librtlsdr is not set
-CONFIG_PACKAGE_libruby=y
+# CONFIG_PACKAGE_libruby is not set
 # CONFIG_PACKAGE_libsamplerate is not set
 # CONFIG_PACKAGE_libsane is not set
 # CONFIG_PACKAGE_libsasl2 is not set
@@ -5034,7 +4915,7 @@ CONFIG_PACKAGE_luci-app-alist=y
 # CONFIG_PACKAGE_luci-app-aria2 is not set
 # CONFIG_PACKAGE_luci-app-arpbind is not set
 # CONFIG_PACKAGE_luci-app-attendedsysupgrade is not set
-CONFIG_PACKAGE_luci-app-autoreboot=y
+# CONFIG_PACKAGE_luci-app-autoreboot is not set
 # CONFIG_PACKAGE_luci-app-babeld is not set
 # CONFIG_PACKAGE_luci-app-baidupcs-web is not set
 # CONFIG_PACKAGE_luci-app-banip is not set
@@ -5133,8 +5014,8 @@ CONFIG_PACKAGE_luci-app-mosdns=y
 # CONFIG_PACKAGE_luci-app-olsr-services is not set
 # CONFIG_PACKAGE_luci-app-olsr-viz is not set
 # CONFIG_PACKAGE_luci-app-olsrd2 is not set
-CONFIG_PACKAGE_luci-app-openclash=y
 # CONFIG_PACKAGE_luci-app-omcproxy is not set
+CONFIG_PACKAGE_luci-app-openclash=y
 # CONFIG_PACKAGE_luci-app-openvpn is not set
 # CONFIG_PACKAGE_luci-app-openvpn-server is not set
 # CONFIG_PACKAGE_luci-app-openwisp is not set
@@ -5145,7 +5026,6 @@ CONFIG_PACKAGE_luci-app-opkg=y
 # CONFIG_PACKAGE_luci-app-partexp is not set
 CONFIG_PACKAGE_luci-app-passwall=y
 CONFIG_PACKAGE_luci-app-tinyfilemanager=y
-CONFIG_PACKAGE_luci-app-filetransfer=y
 
 #
 # Configuration
@@ -5153,7 +5033,7 @@ CONFIG_PACKAGE_luci-app-filetransfer=y
 # CONFIG_PACKAGE_luci-app-passwall_Iptables_Transparent_Proxy is not set
 CONFIG_PACKAGE_luci-app-passwall_Nftables_Transparent_Proxy=y
 CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Haproxy=y
-# CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Hysteria=y
+# CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Hysteria is not set
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_NaiveProxy is not set
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Libev_Client is not set
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Libev_Server is not set
@@ -5162,12 +5042,12 @@ CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Rust_Client=y
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Client is not set
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Server is not set
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Simple_Obfs is not set
-# CONFIG_PACKAGE_luci-app-passwall_INCLUDE_SingBox=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_SingBox=y
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_Plus is not set
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_tuic_client is not set
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray_Geodata is not set
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray_Plugin is not set
-# CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray=y
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray_Plugin is not set
 # end of Configuration
 
@@ -5180,16 +5060,16 @@ CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Rust_Client=y
 CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Haproxy=y
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Hysteria is not set
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_NaiveProxy is not set
-# CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Libev_Client is not set
+CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Libev_Client=y
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Libev_Server is not set
 CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Rust_Client=y
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Rust_Server is not set
-# CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_ShadowsocksR_Libev_Client is not set
+CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_ShadowsocksR_Libev_Client=y
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_ShadowsocksR_Libev_Server is not set
-# CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Simple_Obfs is not set
+CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Simple_Obfs=y
 CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_SingBox=y
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_tuic_client is not set
-# CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_V2ray_Plugin is not set
+CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_V2ray_Plugin=y
 # end of Configuration
 
 # CONFIG_PACKAGE_luci-app-pbr is not set
@@ -5371,7 +5251,6 @@ CONFIG_PACKAGE_default-settings-chn=y
 # CONFIG_PACKAGE_luci-i18n-alist-vi is not set
 CONFIG_PACKAGE_luci-i18n-alist-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-alist-zh-tw is not set
-CONFIG_PACKAGE_luci-i18n-autoreboot-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-base-ar is not set
 # CONFIG_PACKAGE_luci-i18n-base-bg is not set
 # CONFIG_PACKAGE_luci-i18n-base-bn is not set
@@ -5517,6 +5396,8 @@ CONFIG_PACKAGE_luci-i18n-samba4-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-smartdns-lt is not set
 CONFIG_PACKAGE_luci-i18n-smartdns-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-smartdns-zh-tw is not set
+CONFIG_PACKAGE_luci-i18n-tinyfilemanager-zh-cn=y
+# CONFIG_PACKAGE_luci-i18n-tinyfilemanager-zh-tw is not set
 # CONFIG_PACKAGE_luci-i18n-ttyd-ar is not set
 # CONFIG_PACKAGE_luci-i18n-ttyd-bg is not set
 # CONFIG_PACKAGE_luci-i18n-ttyd-bn is not set
@@ -5550,8 +5431,6 @@ CONFIG_PACKAGE_luci-i18n-smartdns-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-ttyd-vi is not set
 CONFIG_PACKAGE_luci-i18n-ttyd-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-ttyd-zh-tw is not set
-CONFIG_PACKAGE_luci-i18n-tinyfilemanager-zh-cn=y
-# CONFIG_PACKAGE_luci-i18n-tinyfilemanager-zh-tw is not set
 CONFIG_PACKAGE_luci-i18n-vlmcsd-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-vlmcsd-zh-tw is not set
 CONFIG_PACKAGE_luci-i18n-webadmin-zh-cn=y
@@ -6368,7 +6247,7 @@ CONFIG_PACKAGE_shadowsocks-rust-sslocal=y
 # CONFIG_PACKAGE_shadowsocksr-libev-ssr-nat is not set
 # CONFIG_PACKAGE_shadowsocksr-libev-ssr-redir is not set
 # CONFIG_PACKAGE_shadowsocksr-libev-ssr-server is not set
-# CONFIG_PACKAGE_sing-box=y
+CONFIG_PACKAGE_sing-box=y
 # CONFIG_SING_BOX_BUILD_ACME is not set
 CONFIG_SING_BOX_BUILD_CLASH_API=y
 # CONFIG_SING_BOX_BUILD_DHCP is not set
@@ -6574,7 +6453,7 @@ CONFIG_PACKAGE_alist=y
 # CONFIG_PACKAGE_httping-nossl is not set
 # CONFIG_PACKAGE_https-dns-proxy is not set
 # CONFIG_PACKAGE_httptunnel is not set
-# CONFIG_PACKAGE_hysteria=y
+# CONFIG_PACKAGE_hysteria is not set
 # CONFIG_PACKAGE_i2pd is not set
 # CONFIG_PACKAGE_ibrdtn-tools is not set
 # CONFIG_PACKAGE_ibrdtnd is not set
@@ -6809,7 +6688,7 @@ CONFIG_PACKAGE_vlmcsd=y
 # CONFIG_PACKAGE_wpan-tools is not set
 # CONFIG_PACKAGE_wwan is not set
 # CONFIG_PACKAGE_xinetd is not set
-# CONFIG_PACKAGE_xray-core=y
+CONFIG_PACKAGE_xray-core=y
 # CONFIG_PACKAGE_xray-example is not set
 # CONFIG_PACKAGE_ztdns is not set
 # end of Network
@@ -7083,7 +6962,7 @@ CONFIG_PACKAGE_ntfs3-mount=y
 #
 # Shells
 #
-CONFIG_PACKAGE_bash=y
+# CONFIG_PACKAGE_bash is not set
 # CONFIG_PACKAGE_fish is not set
 # CONFIG_PACKAGE_klish is not set
 # CONFIG_PACKAGE_mksh is not set
@@ -7504,7 +7383,7 @@ CONFIG_PACKAGE_libjson-script=y
 # CONFIG_PACKAGE_openobex-apps is not set
 # CONFIG_PACKAGE_openocd is not set
 # CONFIG_PACKAGE_opensc-utils is not set
-CONFIG_PACKAGE_openssl-util=y
+# CONFIG_PACKAGE_openssl-util is not set
 # CONFIG_PACKAGE_openzwave is not set
 # CONFIG_PACKAGE_openzwave-config is not set
 # CONFIG_PACKAGE_owipcalc is not set
