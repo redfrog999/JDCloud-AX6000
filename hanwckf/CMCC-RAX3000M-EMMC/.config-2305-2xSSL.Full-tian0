@@ -1762,6 +1762,7 @@ CONFIG_ZABBIX_POSTGRESQL=y
 # CONFIG_PACKAGE_gkrellmd is not set
 # CONFIG_PACKAGE_gotop is not set
 CONFIG_PACKAGE_htop=y
+# CONFIG_HTOP_LMSENSORS is not set
 # CONFIG_PACKAGE_ipmitool is not set
 # CONFIG_PACKAGE_monit is not set
 # CONFIG_PACKAGE_monit-nossl is not set
@@ -4205,7 +4206,7 @@ CONFIG_GNUTLS_ANON=y
 # end of Configuration
 
 # CONFIG_PACKAGE_libgnutls-dane is not set
-CONFIG_PACKAGE_libmbedtls=y
+# CONFIG_PACKAGE_libmbedtls is not set
 # CONFIG_PACKAGE_libnss is not set
 CONFIG_PACKAGE_libopenssl=y
 
@@ -4260,7 +4261,7 @@ CONFIG_PACKAGE_libopenssl-conf=y
 # CONFIG_PACKAGE_libopenssl-devcrypto is not set
 # CONFIG_PACKAGE_libopenssl-gost_engine is not set
 CONFIG_PACKAGE_libopenssl-legacy=y
-# CONFIG_PACKAGE_libwolfssl is not set
+CONFIG_PACKAGE_libwolfssl=y
 
 #
 # wolfSSL Library Configuration
@@ -4280,9 +4281,15 @@ CONFIG_WOLFSSL_HAS_ECC25519=y
 # CONFIG_WOLFSSL_HAS_ECC448 is not set
 CONFIG_WOLFSSL_HAS_OPENVPN=y
 CONFIG_WOLFSSL_ALT_NAMES=y
+CONFIG_WOLFSSL_HAS_DEVCRYPTO=y
+# CONFIG_WOLFSSL_HAS_NO_HW is not set
+# CONFIG_WOLFSSL_HAS_AFALG is not set
+# CONFIG_WOLFSSL_HAS_DEVCRYPTO_CBC is not set
+# CONFIG_WOLFSSL_HAS_DEVCRYPTO_AES is not set
+CONFIG_WOLFSSL_HAS_DEVCRYPTO_FULL=y
 # end of wolfSSL Library Configuration
 
-CONFIG_PACKAGE_libwolfsslcpu-crypto=y
+# CONFIG_PACKAGE_libwolfsslcpu-crypto is not set
 CONFIG_PACKAGE_libwolfssl-benchmark=y
 # end of SSL
 
@@ -5026,6 +5033,7 @@ CONFIG_PACKAGE_luci-app-opkg=y
 # CONFIG_PACKAGE_luci-app-partexp is not set
 CONFIG_PACKAGE_luci-app-passwall=y
 CONFIG_PACKAGE_luci-app-tinyfilemanager=y
+CONFIG_PACKAGE_luci-app-filetransfer=y
 
 #
 # Configuration
@@ -5396,8 +5404,6 @@ CONFIG_PACKAGE_luci-i18n-samba4-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-smartdns-lt is not set
 CONFIG_PACKAGE_luci-i18n-smartdns-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-smartdns-zh-tw is not set
-CONFIG_PACKAGE_luci-i18n-tinyfilemanager-zh-cn=y
-# CONFIG_PACKAGE_luci-i18n-tinyfilemanager-zh-tw is not set
 # CONFIG_PACKAGE_luci-i18n-ttyd-ar is not set
 # CONFIG_PACKAGE_luci-i18n-ttyd-bg is not set
 # CONFIG_PACKAGE_luci-i18n-ttyd-bn is not set
@@ -5431,6 +5437,8 @@ CONFIG_PACKAGE_luci-i18n-tinyfilemanager-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-ttyd-vi is not set
 CONFIG_PACKAGE_luci-i18n-ttyd-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-ttyd-zh-tw is not set
+CONFIG_PACKAGE_luci-i18n-tinyfilemanager-zh-cn=y
+# CONFIG_PACKAGE_luci-i18n-tinyfilemanager-zh-tw is not set
 CONFIG_PACKAGE_luci-i18n-vlmcsd-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-vlmcsd-zh-tw is not set
 CONFIG_PACKAGE_luci-i18n-webadmin-zh-cn=y
@@ -7127,6 +7135,9 @@ CONFIG_PACKAGE_ttyd=y
 # CONFIG_PACKAGE_conmon is not set
 # CONFIG_PACKAGE_containerd is not set
 CONFIG_PACKAGE_coremark=y
+CONFIG_COREMARK_OPTIMIZE_O3=y
+CONFIG_COREMARK_ENABLE_MULTITHREADING=y
+CONFIG_COREMARK_NUMBER_OF_THREADS=16
 CONFIG_PACKAGE_coreutils=y
 # CONFIG_PACKAGE_coreutils-b2sum is not set
 # CONFIG_PACKAGE_coreutils-base32 is not set
