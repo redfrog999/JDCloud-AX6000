@@ -8,7 +8,8 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 ###############改名字##############
-name: 3KMe-52M-2xSSL.Full.PSW-Tian0-Samba4
+#name: 3KMe-52M-2xSSL.Full.PSW-Tian0-Samba4
+name: 暂停维护
 
 on:
   repository_dispatch:
