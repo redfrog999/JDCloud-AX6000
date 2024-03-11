@@ -28,7 +28,7 @@ UPDATE_PACKAGE "argon" "jerrykuku/luci-theme-argon" "master"
 UPDATE_PACKAGE "argon-config" "jerrykuku/luci-app-argon-config" "master"
 UPDATE_PACKAGE "kucat" "sirpdboy/luci-theme-kucat" "js"
 
-UPDATE_PACKAGE "openclash" "vernesong/OpenClash" "master"
+UPDATE_PACKAGE "openclash" "vernesong/OpenClash" "dev"
 
 #更新软件包版本
 UPDATE_VERSION() {
