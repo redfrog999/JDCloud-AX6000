@@ -9,7 +9,7 @@
 #
 ###############手动修改##############
 #name: 3KMe-237-PSW.OPC.ipt精简
-name：取消维护 
+name: 取消维护 
 
 on:
   repository_dispatch:
