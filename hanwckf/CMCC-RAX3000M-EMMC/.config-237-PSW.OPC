@@ -5889,7 +5889,7 @@ CONFIG_PACKAGE_luci-app-usbmodem=y
 # CONFIG_PACKAGE_luci-app-wifischedule is not set
 # CONFIG_PACKAGE_luci-app-wireguard is not set
 # CONFIG_PACKAGE_luci-app-wol is not set
-# CONFIG_PACKAGE_luci-app-wrtbwmon is not set
+CONFIG_PACKAGE_luci-app-wrtbwmon=y
 # CONFIG_PACKAGE_luci-app-xinetd is not set
 # CONFIG_PACKAGE_luci-app-xlnetacc is not set
 # CONFIG_PACKAGE_luci-app-yggdrasil is not set
@@ -6258,7 +6258,7 @@ CONFIG_PACKAGE_luci-i18n-upnp-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-upnp-zh-tw is not set
 CONFIG_PACKAGE_luci-i18n-usb-printer-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-usbmodem-zh-cn=y
-# CONFIG_PACKAGE_luci-i18n-wrtbwmon-zh-cn is not set
+CONFIG_PACKAGE_luci-i18n-wrtbwmon-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-wrtbwmon-zh-tw is not set
 # end of LuCI
 
@@ -7233,7 +7233,7 @@ CONFIG_PACKAGE_modeminfo=y
 #
 # Tools
 #
-# CONFIG_PACKAGE_wrtbwmon is not set
+CONFIG_PACKAGE_wrtbwmon=y
 # end of Tools
 
 #
@@ -8177,7 +8177,7 @@ CONFIG_PACKAGE_ntfs3-mount=y
 # CONFIG_PACKAGE_collectd is not set
 # CONFIG_PACKAGE_conmon is not set
 # CONFIG_PACKAGE_containerd is not set
-# CONFIG_PACKAGE_coremark is not set
+CONFIG_PACKAGE_coremark=y
 CONFIG_PACKAGE_coreutils=y
 # CONFIG_PACKAGE_coreutils-b2sum is not set
 # CONFIG_PACKAGE_coreutils-base32 is not set
