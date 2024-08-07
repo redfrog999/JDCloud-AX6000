@@ -10,7 +10,7 @@ on:
         description: 'SSH connection to Actions'
 
 env:
-  REPO_URL: https://github.com/redfrog999000/237-immortalwrt-mt798x
+  REPO_URL: https://github.com/NicolasMe9907/237-immortalwrt-mt798x
   #REPO_URL: https://github.com/RavenCage/immortalwrt
   #REPO_BRANCH: openwrt-23.05
   REPO_BRANCH: openwrt-21.02
