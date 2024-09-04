@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PKG_PATCH="$GITHUB_WORKSPACE/wrt/package/"
+
 #预置OpenClash内核和数据
 if [ -d *"OpenClash"* ]; then
 	CORE_VER="https://raw.githubusercontent.com/vernesong/OpenClash/core/dev/core_version"
@@ -16,15 +18,15 @@ if [ -d *"OpenClash"* ]; then
 
 	cd ./OpenClash/luci-app-openclash/root/etc/openclash/
 
-	curl -sfL -o Country.mmdb $GEO_MMDB
-	curl -sfL -o GeoSite.dat $GEO_SITE
-	curl -sfL -o GeoIP.dat $GEO_IP
-
+	curl -sL -o Country.mmdb $GEO_MMDB && echo "Country.mmdb done!"
+	curl -sL -o GeoSite.dat $GEO_SITE && echo "GeoSite.dat done!"
+	curl -sL -o GeoIP.dat $GEO_IP && echo "GeoIP.dat done!"
+ 
 	mkdir ./core/ && cd ./core/
 
-	curl -sfL -o meta.tar.gz $CORE_MATE && tar -zxf meta.tar.gz && mv -f clash clash_meta
-	#curl -sfL -o tun.gz $CORE_TUN && gzip -d tun.gz && mv -f tun clash_tun
-	curl -sfL -o dev.tar.gz $CORE_DEV && tar -zxf dev.tar.gz
+	curl -sL -o meta.tar.gz $CORE_MATE && tar -zxf meta.tar.gz && mv -f clash clash_meta && echo "meta done!"
+	#curl -sL -o tun.gz $CORE_TUN && gzip -d tun.gz && mv -f tun clash_tun && echo "tun done!"
+	#curl -sL -o dev.tar.gz $CORE_DEV && tar -zxf dev.tar.gz && echo "dev done!"
 
 	chmod +x ./clash* && rm -rf ./*.gz
 
