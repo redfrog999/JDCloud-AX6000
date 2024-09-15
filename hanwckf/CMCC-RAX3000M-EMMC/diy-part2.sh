@@ -22,5 +22,5 @@ sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_genera
 
 echo '替换golang到1.22.x'
 rm -rf feeds/packages/lang/golang
-git clone -b 22.x --single-branch https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
+git clone -b 23.x --single-branch https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
 echo '=========Replace golang OK!========='
