@@ -13,9 +13,14 @@
 # Modify default IP
 #sed -i 's/192.168.10.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 
-# drop mosdns and v2ray-geodata packages that come with the source
-find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
-find ./ | grep Makefile | grep mosdns | xargs rm -f
+# Modify hostname
+#sed -i 's/ImmortalWrt/rax3000m_256m/g' package/base-files/files/bin/config_generate
 
-git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
-git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+#修改wifi名称（mtwifi-cfg）
+#sed -i 's/ImmortalWrt-2.4G/OpenWrt/g' package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
+#sed -i 's/ImmortalWrt-5G/OpenWrt5G/g' package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
+
+echo '替换golang到1.23.x'
+rm -rf feeds/packages/lang/golang
+git clone -b 22.x --single-branch https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
+echo '=========Replace golang OK!========='
