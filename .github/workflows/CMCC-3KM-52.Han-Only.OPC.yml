@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 ###############手动修改##############
-name: 3KMe-Han-Only.OPC.ipt精简
+name: 3KMe-Han-Only.OPC.iptFull
 
 on:
   repository_dispatch:
