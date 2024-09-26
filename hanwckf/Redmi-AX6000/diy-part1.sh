@@ -16,7 +16,7 @@
 
 # Add a feed source
 #echo 'src-git messense https://github.com/messense/aliyundrive-webdav' >>feeds.conf.default
-echo "src-git mihomo https://github.com/redfrog999/OpenWrt-mihomo.git;main" >> "feeds.conf.default"
+#echo "src-git mihomo https://github.com/redfrog999/OpenWrt-mihomo.git;main" >> "feeds.conf.default"
 
 
 # 添加插件源码
