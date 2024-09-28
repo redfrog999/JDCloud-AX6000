@@ -8,7 +8,8 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 ###############改名字##############
-name: 3KMe-2xSSL.CPU-FullPackages-Tian0
+#name: 3KMe-2xSSL.CPU-FullPackages-Tian0
+name: 暂停维护
 
 on:
   repository_dispatch:
