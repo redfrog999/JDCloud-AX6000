@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 ###############改名字##############
-name: 3KMe-52M-237.23.05-2xPSW-Mihomo-Samba4
+name: 3KMe-237-23.05-2xPSW-Mihomo-Samba4
 
 on:
   repository_dispatch:
