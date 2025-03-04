@@ -2,7 +2,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: OpenWrt 360T7 Han-21.02
+name: OpenWrt RAX3KM.eMMC Han-21.02
 
 on:
   repository_dispatch:
