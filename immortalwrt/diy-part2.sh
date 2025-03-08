@@ -50,8 +50,8 @@ rm -rf feeds/luci/applications/luci-app-passwall2
 git clone https://github.com/xiaorouji/openwrt-passwall2 package/luci-app-passwall2
 
 # Nikki
-rm -rf feeds/luci/applications/luci-app-nikki
-git clone https://github.com/nikkinikki-org/OpenWrt-nikki package/luci-app-nikki
+# rm -rf feeds/luci/applications/luci-app-nikki
+# git clone https://github.com/nikkinikki-org/OpenWrt-nikki package/luci-app-nikki
 
 # 优化socat中英翻译
 sed -i 's/仅IPv6/仅 IPv6/g' package/feeds/luci/luci-app-socat/po/zh_Hans/socat.po
@@ -130,9 +130,9 @@ curl_ver=$(cat feeds/packages/net/curl/Makefile | grep -i "PKG_VERSION:=" | awk 
 }
 
 # apk-tools APK管理器不再校验版本号的合法性
-mkdir -p package/system/apk/patches && cp -f ${GITHUB_WORKSPACE}/patch/apk-tools/9999-hack-for-linux-pre-releases.patch package/system/apk/patches/
+# mkdir -p package/system/apk/patches && cp -f ${GITHUB_WORKSPACE}/patch/apk-tools/9999-hack-for-linux-pre-releases.patch package/system/apk/patches/
 
-mirror=raw.githubusercontent.com/sbwml/r4s_build_script/master
+# mirror=raw.githubusercontent.com/sbwml/r4s_build_script/master
 
 # 精简 UPnP 菜单名称
 sed -i 's#\"title\": \"UPnP IGD \& PCP\"#\"title\": \"UPnP\"#g' feeds/luci/applications/luci-app-upnp/root/usr/share/luci/menu.d/luci-app-upnp.json
@@ -154,14 +154,14 @@ pushd feeds/packages
 popd
 
 # 修正部分从第三方仓库拉取的软件 Makefile 路径问题
-find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/..\/..\/luci.mk/$(TOPDIR)\/feeds\/luci\/luci.mk/g' {}
-find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/..\/..\/lang\/golang\/golang-package.mk/$(TOPDIR)\/feeds\/packages\/lang\/golang\/golang-package.mk/g' {}
-find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_URL:=@GHREPO/PKG_SOURCE_URL:=https:\/\/github.com/g' {}
-find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_URL:=@GHCODELOAD/PKG_SOURCE_URL:=https:\/\/codeload.github.com/g' {}
+# find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/..\/..\/luci.mk/$(TOPDIR)\/feeds\/luci\/luci.mk/g' {}
+# find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/..\/..\/lang\/golang\/golang-package.mk/$(TOPDIR)\/feeds\/packages\/lang\/golang\/golang-package.mk/g' {}
+# find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_URL:=@GHREPO/PKG_SOURCE_URL:=https:\/\/github.com/g' {}
+# find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_URL:=@GHCODELOAD/PKG_SOURCE_URL:=https:\/\/codeload.github.com/g' {}
 
 # 自定义默认配置
-sed -i '/exit 0$/d' package/emortal/default-settings/files/99-default-settings
-cat ${GITHUB_WORKSPACE}/immortalwrt/default-settings >> package/emortal/default-settings/files/99-default-settings
+# sed -i '/exit 0$/d' package/emortal/default-settings/files/99-default-settings
+# cat ${GITHUB_WORKSPACE}/immortalwrt/default-settings >> package/emortal/default-settings/files/99-default-settings
 
 # 拷贝自定义文件
 if [ -n "$(ls -A "${GITHUB_WORKSPACE}/immortalwrt/diy" 2>/dev/null)" ]; then
