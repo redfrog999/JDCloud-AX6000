@@ -26,7 +26,7 @@ env:
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: hanwckf/CMCC-RAX3000M-EMMC/.config-Han-Only.OPC
-  DIY_P1_SH: hanwckf/CMCC-RAX3000M-EMMC/diy-part1.sh
+  DIY_P1_SH: hanwckf/CMCC-RAX3000M-EMMC/diy-part1-21.02.sh
   DIY_P2_SH: hanwckf/CMCC-RAX3000M-EMMC/diy-part2.sh
   PACKAGES_SH: hanwckf/CMCC-RAX3000M-EMMC/Packages.sh
   HANDLES_SH: hanwckf/CMCC-RAX3000M-EMMC/Handles.sh
