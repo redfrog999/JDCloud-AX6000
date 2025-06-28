@@ -66,10 +66,6 @@ git clone https://github.com/lwb1978/openwrt-smartdns package/smartdns
 # 添加 smartdns-ui
 echo "CONFIG_PACKAGE_smartdns-ui=y" >> .config
 
-# openssl Enable QUIC and KTLS support
-echo "CONFIG_OPENSSL_WITH_QUIC=y" >> .config.RAX3KM.eMMC-21.02.bak
-# echo "CONFIG_OPENSSL_WITH_KTLS=y" >> .config
-
 # 替换udpxy为修改版，解决组播源数据有重复数据包导致的花屏和马赛克问题
 rm -rf feeds/packages/net/udpxy/Makefile
 cp -rf ${GITHUB_WORKSPACE}/patch/udpxy/Makefile feeds/packages/net/udpxy/
