@@ -64,7 +64,8 @@ rm -rf feeds/luci/applications/luci-app-smartdns
 git clone https://github.com/lwb1978/luci-app-smartdns package/luci-app-smartdns
 # 替换immortalwrt 软件仓库smartdns版本为官方最新版
 rm -rf feeds/packages/net/smartdns
-cp -rf ${GITHUB_WORKSPACE}/patch/smartdns feeds/packages/net
+git clone https://github.com/lwb1978/openwrt-smartdns package/smartdns
+# cp -rf ${GITHUB_WORKSPACE}/patch/smartdns feeds/packages/net
 # 添加 smartdns-ui
 # echo "CONFIG_PACKAGE_smartdns-ui=y" >> .config
 
@@ -161,12 +162,6 @@ pushd feeds/packages
 		patch -p1 < ${GITHUB_WORKSPACE}/patch/vim/0001-vim-fix-renamed-defaults-config-file.patch
 	}
 popd
-
-# update samba4 to latest version
-rm -rf feeds/packages/libs/liburing
-git clone https://github.com/sbwml/feeds_packages_libs_liburing feeds/packages/libs/liburing
-rm -rf feeds/packages/net/samba4
-git clone https://github.com/sbwml/feeds_packages_net_samba4 feeds/packages/net/samba4
 
 # 修正部分从第三方仓库拉取的软件 Makefile 路径问题
 find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/..\/..\/luci.mk/$(TOPDIR)\/feeds\/luci\/luci.mk/g' {}
