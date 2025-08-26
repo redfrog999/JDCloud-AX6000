@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 ###############改名字##############
-#name: JDCloud03-Smartdns+Core.Mos-hanwckf
+# name: JDCloud03-Smartdns+Core.Mos-hanwckf
 name: 停止维护
 
 on:
