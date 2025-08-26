@@ -2,7 +2,8 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: OpenWrt RAX3KM.eMMC Han-21.02
+#name: OpenWrt RAX3KM.eMMC Han-21.02
+name: 停止编译
 
 on:
   repository_dispatch:
