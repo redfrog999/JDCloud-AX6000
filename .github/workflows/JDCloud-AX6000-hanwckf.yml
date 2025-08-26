@@ -9,7 +9,7 @@
 #
 ###############改名字##############
 #name: JDCloud03-Smartdns+Core.Mos-hanwckf
-name: 状态维护
+name: 停止维护
 
 on:
   repository_dispatch:
