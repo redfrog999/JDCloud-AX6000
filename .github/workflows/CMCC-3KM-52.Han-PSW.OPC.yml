@@ -9,7 +9,7 @@
 #
 ###############手动修改##############
 #name: 3KMe-Han-Only.PSW.iptFull
-name:停止维护
+name: 停止维护
 
 on:
   repository_dispatch:
