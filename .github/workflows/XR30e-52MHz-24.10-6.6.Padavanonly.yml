@@ -2,8 +2,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-#name: OpenWrt XR30.eMMC Han-21.02
-name: 停止编译
+name: OpenWrt XR30.eMMC 24.10-6.6-Padavanonly
 
 on:
   repository_dispatch:
@@ -12,14 +11,14 @@ on:
 #    - cron: 0 8 * * 5
 
 env:
-  REPO_URL: https://github.com/redfrog999/immortalwrt-mt798x.git
-  REPO_BRANCH: openwrt-21.02
+  REPO_URL: https://github.com/redfrog999/immortalwrt-mt798x-6.6.git
+  REPO_BRANCH: openwrt-24.10-6.6
   DEVICE_NAME: CMCC-XR30-emmc-Im
   FILES: immortalwrt/files
   FEEDS_CONF: immortalwrt/feeds.conf.default
-  CONFIG_FILE: immortalwrt/.config.XR30.eMMC-21.02.bak
-  DIY_P1_SH: immortalwrt/diy-part1-21.02.sh
-  DIY_P2_SH: immortalwrt/diy-part2-xr30e.sh
+  CONFIG_FILE: immortalwrt/.config.XR30e.Padavanonly-24.10-6.6.bak
+  DIY_P1_SH: immortalwrt/diy-part1.sh
+  DIY_P2_SH: immortalwrt/diy-part2-xr30e-24.10.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
