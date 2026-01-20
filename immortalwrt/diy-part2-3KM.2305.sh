@@ -45,12 +45,12 @@ merge_package v5 https://github.com/sbwml/openwrt_helloworld package/passwall-pa
 # app
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-libev-server}
 # git clone https://github.com/lwb1978/openwrt-passwall package/passwall-luci
-git clone https://github.com/Openwrt-Passwall/openwrt-passwall/openwrt-passwall package/passwall-luci
+git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-luci
 # ------------------------------------------------------------
 
 # Passwall2
 rm -rf feeds/luci/applications/luci-app-passwall2
-git clone https://github.com/Openwrt-Passwall/openwrt-passwall/openwrt-passwall2 package/luci-app-passwall2
+git clone https://github.com/Openwrt-Passwall/openwrt-passwall2 package/luci-app-passwall2
 
 # Nikki
 rm -rf feeds/luci/applications/luci-app-nikki
