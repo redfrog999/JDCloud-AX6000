@@ -2,7 +2,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: OpenWrt DellOpti9020-24.10-6.6-CX556A
+name: OpenWrt DellOpti9020-25.12-6.6-CX556A
 
 on:
   repository_dispatch:
