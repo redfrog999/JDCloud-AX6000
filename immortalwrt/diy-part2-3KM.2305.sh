@@ -107,7 +107,7 @@ git clone --depth=1 -b master https://github.com/NicolasMe9907/luci-theme-kucat 
 git clone --depth=1 -b main https://github.com/NicolasMe9907/luci-app-advancedplus  package/luci-app-advancedplus
 
 git clone --depth=1 https://github.com/eamonxg/luci-theme-aurora package/luci-theme-aurora
-echo "CONFIG_PACKAGE_luci-theme-aurora=y" >> .config.3KMeMMC-Openwrt-24.10-6.6.bak
+echo "CONFIG_PACKAGE_luci-theme-aurora=y" >> .config
 
 # 取消自添加主题的默认设置
 find package/luci-theme-*/* -type f -print | grep '/root/etc/uci-defaults/' | while IFS= read -r file; do
