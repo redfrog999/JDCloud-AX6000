@@ -107,7 +107,7 @@ git clone --depth=1 -b master https://github.com/NicolasMe9907/luci-theme-kucat 
 git clone --depth=1 -b main https://github.com/NicolasMe9907/luci-app-advancedplus  package/luci-app-advancedplus
 
 git clone --depth=1 https://github.com/eamonxg/luci-theme-aurora package/luci-theme-aurora
-echo "CONFIG_PACKAGE_luci-theme-aurora=y" >> .config.XR30eMMC.Padavanonly-24.10-6.6.bak
+echo "CONFIG_PACKAGE_luci-theme-aurora=y" >> .config
 
 # 取消自添加主题的默认设置
 find package/luci-theme-*/* -type f -print | grep '/root/etc/uci-defaults/' | while IFS= read -r file; do
@@ -242,15 +242,9 @@ sed -i 's/-Os -pipe/-O2 -pipe -march=armv8-a+crc+crypto -mtune=cortex-a53/g' inc
 
 # --- 2. 强制开启硬件加速内核模块的默认勾选 ---
 # 虽然 menuconfig 也能选，但写在脚本里能防止你漏掉依赖
-echo "CONFIG_PACKAGE_kmod-crypto-hw-safexcel=y" >> .config.XR30eMMC.Padavanonly-24.10-6.6.bak
-echo "CONFIG_PACKAGE_kmod-crypto-aes=y" >> .config.XR30eMMC.Padavanonly-24.10-6.6.bak
-echo "CONFIG_PACKAGE_kmod-crypto-authenc=y" >> .config.XR30eMMC.Padavanonly-24.10-6.6.bak
-
-# --- 3. 顺手解决你心心念念的 zramctl 依赖 ---
-# 强制开启 util-linux 核心库，确保 zramctl 这次能“出丹”
-echo "CONFIG_PACKAGE_libsmartcols=y" >> .config.XR30eMMC.Padavanonly-24.10-6.6.bak
-echo "CONFIG_PACKAGE_libblkid=y" >> .config.XR30eMMC.Padavanonly-24.10-6.6.bak
-echo "CONFIG_PACKAGE_util-linux-zramctl=y" >> .config.XR30eMMC.Padavanonly-24.10-6.6.bak
+echo "CONFIG_PACKAGE_kmod-crypto-hw-safexcel=y" >> .config.
+echo "CONFIG_PACKAGE_kmod-crypto-aes=y" >> .config
+echo "CONFIG_PACKAGE_kmod-crypto-authenc=y" >> .config
 
 # 拷贝自定义文件
 if [ -n "$(ls -A "${GITHUB_WORKSPACE}/immortalwrt/diy" 2>/dev/null)" ]; then
