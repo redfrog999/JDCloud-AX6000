@@ -19,11 +19,10 @@ permissions:
   id-token: write
 
 env:
-   #  REPO_URL: https://github.com/NicolasMe9907/immortalwrt-mt798x-6.6.git
+  #  REPO_URL: https://github.com/NicolasMe9907/immortalwrt-mt798x-6.6.git
   REPO_URL: https://github.com/redfrog999/immortalwrt-mt798x-6.6.git
   REPO_BRANCH: openwrt-24.10-6.6
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: 24.10.config
   CONFIG_FILE: immortalwrt/.config.3KMeMMC-Openwrt-24.10-6.6.bak
   DIY_P1_SH: immortalwrt/diy-part1.sh
   DIY_P2_SH: immortalwrt/diy-part2-3KM.2305.sh
@@ -193,6 +192,17 @@ jobs:
       run: |
         echo "release_tag=$(date +"%Y.%m.%d-%H.%M")" >> ${GITHUB_OUTPUT}
         touch release.txt
+        echo "
+        💻 路由: P&W RAX3000Me Padavanonly
+        📂 源码: ${{ env.REPO_URL }}
+        🌳 分支: ${{ env.REPO_BRANCH }}
+        ⏱️ 编译时间: $(date +"%Y年%m月%d日%H时%M分")
+        🌐 管理地址: 192.168.10.1
+        👤 用户名: root
+        🔒 密码: 无密码 
+        🚧 软件包-配置opkg-更新以下源
+        src/gz openwrt_kiddin9 https://dl.openwrt.ai/latest/packages/arm_cortex-a7_neon-vfpv4/kiddin9
+        " >> release.txt
         echo "status=success" >> ${GITHUB_OUTPUT}
 
     - name: 自动发布固件到 Releases
