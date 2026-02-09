@@ -2,7 +2,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: OpenWrt RAX3KM.eMMC-24.10-6.6-NewTest
+name: OpenWrt RAX3KM.eMMC-24.10-6.6-Stable
 
 on:
   repository_dispatch:
