@@ -242,7 +242,7 @@ sed -i 's/-Os -pipe/-O2 -pipe -march=armv8-a+crc+crypto -mtune=cortex-a53/g' inc
 
 # --- 2. 强制开启硬件加速内核模块的默认勾选 ---
 # 虽然 menuconfig 也能选，但写在脚本里能防止你漏掉依赖
-echo "CONFIG_PACKAGE_kmod-crypto-hw-safexcel=y" >> .config.
+echo "CONFIG_PACKAGE_kmod-crypto-hw-safexcel=y" >> .config
 echo "CONFIG_PACKAGE_kmod-crypto-aes=y" >> .config
 echo "CONFIG_PACKAGE_kmod-crypto-authenc=y" >> .config
 
