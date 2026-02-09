@@ -1,37 +1,31 @@
 # Description: 此脚本基于 P3TERX 的 Actions-OpenWrt 仓库修改而来。
 # 用于生成config配置文件
 
-name: MakeCfg-798x-3KM-237
+name: MakeCfg-3KMe-Padavanonly-6.6
 
 on:
   workflow_dispatch:
     inputs:
       ssh:
         description: 'SSH connection to Actions'
+        required: true
+        default: 'true'
 
 env:
-  REPO_URL: https://github.com/NicolasMe9907/237-immortalwrt-mt798x
-  #REPO_URL: https://github.com/RavenCage/immortalwrt
-  #REPO_BRANCH: openwrt-23.05
-  REPO_BRANCH: openwrt-21.02
-  DEVICE_NAME: mt798x
-  FILES: files
-  FEEDS_CONF: feeds.conf.default
-  #CONFIG_FILE: hanwckf/JDCloud-AX6000/.00config
-  CONFIG_FILE: hanwckf/CMCC-RAX3000M-EMMC/.config-237default
-  #DIY_P1_SH: hanwckf/JDCloud-AX6000/diy-part1.sh
-  DIY_P1_SH: hanwckf/CMCC-RAX3000M-EMMC/diy-part1.sh
-  #DIY_P2_SH: hanwckf/JDCloud-AX6000/diy-part2.sh
-  DIY_P2_SH: hanwckf/CMCC-RAX3000M-EMMC/diy-part2.sh
-  #FEEDS_CONF: feeds.conf.default
-  #CONFIG_FILE: .config-360-immortalwrt
-  #DIY_P1_SH: diy-part1.sh
-  #DIY_P2_SH: diy-part2.sh
+#  REPO_URL: https://github.com/NicolasMe9907/immortalwrt-mt798x-6.6.git
+  REPO_URL: https://github.com/redfrog999/immortalwrt-mt798x-6.6.git
+  REPO_BRANCH: openwrt-24.10-6.6
+  FEEDS_CONF: immortalwrt/feeds.conf.default
+  DEVICE_NAME: RAX3000M-eMMC
+  FILES: immortalwrt/files
+  CONFIG_FILE: immortalwrt/.config.3KMeMMC-Openwrt-24.10-6.6.bak
+  DIY_P1_SH: immortalwrt/diy-part1.sh
+  DIY_P2_SH: immortalwrt/diy-part2-3KM.2305.sh
   TZ: Asia/Shanghai
 
 jobs:
   config:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
 
     steps:
     - name: Checkout
@@ -42,9 +36,11 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
+        sudo add-apt-repository universe
+        sudo apt update
         sudo -E apt-get -qq update
-        sudo -E apt-get -yqq install $(curl -fsSL github.com/lwb1978/OpenWrt-Actions/raw/main/depends-ubuntu-2004)
-        sudo -E apt-get -yqq autoremove --purge
+        sudo bash -c 'bash <(curl -sL https://build-scripts.immortalwrt.org/init_build_environment.sh)'
+        sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
@@ -90,14 +86,12 @@ jobs:
       with:
         name: OpenWrt-${{ env.DEVICE_NAME }}-Config
         path: /tmp/upload
-
-    - name: 移除旧的 Artifacts
-      uses: c-hive/gha-remove-artifacts@v1.2.0
-      with:
-        age: '1 day'
-        skip-recent: 5
+        include-hidden-files: true
 
     - name: 删除旧的 workflow 运行记录
-      uses: GitRML/delete-workflow-runs@main
+      uses: Mattraks/delete-workflow-runs@main
       with:
-        retain_days: 30
+        token: ${{ github.token }}
+        repository: ${{ github.repository }}
+        retain_days: 1
+        keep_minimum_runs: 1
