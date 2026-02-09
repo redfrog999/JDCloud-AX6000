@@ -18,7 +18,7 @@ env:
   FEEDS_CONF: immortalwrt/feeds.conf.default
   DEVICE_NAME: RAX3000M-eMMC
   FILES: immortalwrt/files
-  CONFIG_FILE: immortalwrt/.config.3KMeMMC-Openwrt-24.10-6.6.bak
+  CONFIG_FILE: immortalwrt/config.3KMeMMC-Openwrt-24.10-6.6.bak
   DIY_P1_SH: immortalwrt/diy-part1.sh
   DIY_P2_SH: immortalwrt/diy-part2-3KM.2305.sh
   TZ: Asia/Shanghai
