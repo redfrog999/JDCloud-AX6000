@@ -22,7 +22,7 @@ env:
   #  REPO_URL: https://github.com/NicolasMe9907/immortalwrt-mt798x-6.6.git
   REPO_URL: https://github.com/redfrog999/immortalwrt-mt798x-6.6.git
   REPO_BRANCH: openwrt-24.10-6.6
-  FEEDS_CONF: feeds.conf.default
+  FEEDS_CONF: immortalwrt/feeds.conf.default
   CONFIG_FILE: immortalwrt/config.XR30eMMC.Padavanonly-24.10-6.6.bak
   DIY_P1_SH: immortalwrt/diy-part1.sh
   DIY_P2_SH: immortalwrt/diy-part2-xr30e-24.10.sh
@@ -197,7 +197,7 @@ jobs:
         📂 源码: ${{ env.REPO_URL }}
         🌳 分支: ${{ env.REPO_BRANCH }}
         ⏱️ 编译时间: $(date +"%Y年%m月%d日%H时%M分")
-        🌐 管理地址: 192.168.33.1
+        🌐 管理地址: 192.168.20.1
         👤 用户名: root
         🔒 密码: 无密码 
         🚧 软件包-配置opkg-更新以下源
