@@ -36,7 +36,7 @@ sed -i '/<br \/>/d' feeds/luci/modules/luci-compat/luasrc/view/cbi/full_valuefoo
 sed -i 's#top -n1#\/bin\/busybox top -n1#g' feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/luci
 
 # 強制給予 uci-defaults 腳本執行權限，防止雲端編譯權限丟失
-chmod +x files/etc/uci-defaults/99-physical-sovereignty
+chmod +x files/etc/uci-defaults/99_physical_sovereignty
 
 #临时解决Rust问题
 # sed -i 's/ci-llvm=true/ci-llvm=false/g' feeds/packages/lang/rust/Makefile
@@ -188,8 +188,8 @@ find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_U
 find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_URL:=@GHCODELOAD/PKG_SOURCE_URL:=https:\/\/codeload.github.com/g' {}
 
 # 自定义默认配置
-# sed -i '/exit 0$/d' package/emortal/default-settings/files/99-default-settings
-# cat ${GITHUB_WORKSPACE}/immortalwrt/default-settings >> package/emortal/default-settings/files/99-default-settings
+sed -i '/exit 0$/d' package/emortal/default-settings/files/99-default-settings
+cat ${GITHUB_WORKSPACE}/immortalwrt/default-settings >> package/emortal/default-settings/files/99-default-settings
 
 # 拷贝自定义文件
 if [ -n "$(ls -A "${GITHUB_WORKSPACE}/immortalwrt/diy" 2>/dev/null)" ]; then
