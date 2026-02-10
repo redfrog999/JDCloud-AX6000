@@ -250,6 +250,9 @@ echo "CONFIG_PACKAGE_kmod-crypto-authenc=y" >> .config
 echo "CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE=y" >> .config
 echo "CONFIG_CPU_FREQ_GOV_PERFORMANCE=y" >> .config
 
+# ---4. 释放内核编译时的指令优化限制
+sed -i 's/-mcpu=cortex-a53/-mcpu=cortex-a53+crc+crypto/g' include/target.mk
+
 # 拷贝自定义文件
 if [ -n "$(ls -A "${GITHUB_WORKSPACE}/immortalwrt/diy" 2>/dev/null)" ]; then
 	cp -Rf ${GITHUB_WORKSPACE}/immortalwrt/diy/* .
