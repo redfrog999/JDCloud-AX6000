@@ -246,6 +246,10 @@ echo "CONFIG_PACKAGE_kmod-crypto-hw-safexcel=y" >> .config
 echo "CONFIG_PACKAGE_kmod-crypto-aes=y" >> .config
 echo "CONFIG_PACKAGE_kmod-crypto-authenc=y" >> .config
 
+# ---3. 强制开启内核的 CPU 频率调节器并锁定高性能模式
+echo "CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE=y" >> .config
+echo "CONFIG_CPU_FREQ_GOV_PERFORMANCE=y" >> .config
+
 # 拷贝自定义文件
 if [ -n "$(ls -A "${GITHUB_WORKSPACE}/immortalwrt/diy" 2>/dev/null)" ]; then
 	cp -Rf ${GITHUB_WORKSPACE}/immortalwrt/diy/* .
