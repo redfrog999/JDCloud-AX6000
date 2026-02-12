@@ -240,6 +240,17 @@ if [ -n "$(ls -A "${GITHUB_WORKSPACE}/immortalwrt/diy" 2>/dev/null)" ]; then
 	cp -Rf ${GITHUB_WORKSPACE}/immortalwrt/diy/* .
 fi
 
+# --- 5. 固化 TCP BBR 加速与内核优化 ---
+# 强制将 BBR 写入系统默认配置，无需插件干预
+echo "net.ipv4.tcp_congestion_control=bbr" >> package/base-files/files/etc/sysctl.conf
+echo "net.core.default_qdisc=fq" >> package/base-files/files/etc/sysctl.conf
+
+# --- 6. 确保物理 HNAT (PPE) 默认开启 ---
+# 在系统启动脚本中直接注入开启指令，不再依赖 TurboACC 面板
+sed -i '/exit 0/i \
+sysctl -w net.netfilter.nf_conntrack_helper=1 \
+sysctl -w net.netfilter.nf_flow_table_hw=1' package/base-files/files/etc/rc.local
+
 #./scripts/feeds update -a
 #./scripts/feeds install -a
 
