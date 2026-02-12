@@ -292,6 +292,10 @@ sed -i '/exit 0/i \
 sysctl -w net.netfilter.nf_conntrack_helper=1 \
 sysctl -w net.netfilter.nf_flow_table_hw=1' package/base-files/files/etc/rc.local
 
+# --- 7. 物理封印 MTK 硬件流控 (HQoS) ---
+# 既然有 BBR+FQ，这种陈旧的硬件流控就是负担
+sed -i 's/CONFIG_PACKAGE_luci-app-mtkhqos=y/CONFIG_PACKAGE_luci-app-mtkhqos=n/g' .config
+
 # 拷贝自定义文件
 if [ -n "$(ls -A "${GITHUB_WORKSPACE}/immortalwrt/diy" 2>/dev/null)" ]; then
 	cp -Rf ${GITHUB_WORKSPACE}/immortalwrt/diy/* .
