@@ -53,8 +53,6 @@ rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-libev-server}
 # git clone https://github.com/lwb1978/openwrt-passwall package/passwall-luci
 git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-luci
 
-# --- 1. 搬运药材：拉取缺失的底层依赖源码 ---
-# 从 helloworld 库精准获取 libustls (用于 uTLS 模拟)
 git clone --depth=1 https://github.com/fw876/helloworld package/molun
 
 # 从 jerrykuku 库补齐可能缺失的辅助包
@@ -80,6 +78,9 @@ sed -i 's/CONFIG_PACKAGE_libopenssl-afalg-sync=y/CONFIG_PACKAGE_libopenssl-afalg
 
 # 强制开启标准的异步 afalg 插件，确保 Safexcel 引擎火力全开
 echo "CONFIG_PACKAGE_libopenssl-afalg=y" >> .config
+# ------------------------------------------------------------
+
+# Passwall2
 # ------------------------------------------------------------
 
 # Passwall2
