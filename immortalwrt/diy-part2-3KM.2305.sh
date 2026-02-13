@@ -269,15 +269,6 @@ sysctl -w net.netfilter.nf_flow_table_hw=1' package/base-files/files/etc/rc.loca
 # 极致性能压榨与大清洗：运营商定制机/外销机 差异化调优
 # =========================================================
 
-# --- 1. 封印血栓：释放 OpenSSL 异步能力 ---
-sed -i 's/CONFIG_PACKAGE_libopenssl-afalg-sync=y/CONFIG_PACKAGE_libopenssl-afalg-sync=n/g' .config
-
-# --- 2. 机型定向优化逻辑 ---
-# 确保在写入 sysctl.conf 时不会因为 EOF 解析报错
-cat >> package/base-files/files/etc/sysctl.conf <<'EOF'
-
-# [通用优化] 开启 BBR 和 高精度计时器，降低微秒级抖动
-kernel.sched_latency_ns=10000000
 kernel.sched_min_granularity_ns=2000000
 
 EOF
@@ -305,6 +296,18 @@ fi
 # --- 3. 存储挂载优化 (针对有 eMMC 的机型) ---
 # 使用双引号包裹 sed 逻辑，避免单引号嵌套导致的 EOF 错误
 sed -i "s/options\s*'errors=remount-ro'/options 'noatime,nodiratime,errors=remount-ro'/g" package/base-files/files/lib/functions/uci-defaults.sh || true
+
+# 拷贝自定义文件
+if [ -n "$(ls -A "${GITHUB_WORKSPACE}/immortalwrt/diy" 2>/dev/null)" ]; then
+	cp -Rf ${GITHUB_WORKSPACE}/immortalwrt/diy/* .
+fi
+
+#./scripts/feeds update -a
+#./scripts/feeds install -a
+
+make defconfig
+
+echo "========================="
 
 # 拷贝自定义文件
 if [ -n "$(ls -A "${GITHUB_WORKSPACE}/immortalwrt/diy" 2>/dev/null)" ]; then
