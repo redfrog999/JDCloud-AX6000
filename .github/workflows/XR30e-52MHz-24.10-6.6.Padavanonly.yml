@@ -2,7 +2,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: OpenWrt OpenWrt XR30.eMMC 24.10-6.6-Padavanonly
+name: OpenWrt XR30.eMMC 24.10-6.6-Padavanonly
 
 on:
   repository_dispatch:
