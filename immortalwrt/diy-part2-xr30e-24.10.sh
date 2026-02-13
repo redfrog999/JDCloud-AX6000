@@ -277,8 +277,6 @@ sed -i 's/CONFIG_PACKAGE_libopenssl-afalg-sync=y/CONFIG_PACKAGE_libopenssl-afalg
 cat >> package/base-files/files/etc/sysctl.conf <<'EOF'
 
 # [通用优化] 开启 BBR 和 高精度计时器，降低微秒级抖动
-net.core.default_qdisc=fq
-net.ipv4.tcp_congestion_control=bbr
 kernel.sched_latency_ns=10000000
 kernel.sched_min_granularity_ns=2000000
 
