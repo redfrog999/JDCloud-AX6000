@@ -162,6 +162,10 @@ jobs:
         # 6. 预加载缓存目录（确保 AI 模块有地方放数据库）
         mkdir -p "$ROOT_DIR/openwrt/files/etc/openclash/cache"
         echo "🎉 SmartCore 整合完成，准备进入编译环节。"
+
+    - name: Update feeds
+      run: cd openwrt && ./scripts/feeds update -a
+               wget -O feeds/packages/lang/rust/Makefile https://raw.githubusercontent.com/immortalwrt/packages/refs/heads/master/lang/rust/Makefile
         
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
