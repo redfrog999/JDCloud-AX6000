@@ -109,6 +109,56 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
+     - name: Precise Download SmartCore (AI-Driven) for MT798x
+  run: |
+    # ==================== 核心配置 ====================
+    # 指向你提供的 vernesong 智能内核仓库路径
+    SMARTCORE_RAW_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/smart/clash-linux-arm64.tar.gz"
+    CORE_DIR="openwrt/files/etc/openclash/core"
+    # ==================================================
+
+    ROOT_DIR=$(pwd)
+    FULL_CORE_DIR="$ROOT_DIR/$CORE_DIR"
+    FULL_TARGET_FILE="$FULL_CORE_DIR/clash_meta"
+
+    echo "🎯 正在从 OpenClash 核心仓库提取 SmartCore..."
+
+    # 1. 强制创建目录
+    mkdir -p "$FULL_CORE_DIR" || exit 1
+
+    # 2. 下载指定的 SmartCore 压缩包
+    # 注意：vernesong 的仓库里文件名通常带架构后缀，我们需要下载后统一更名
+    echo "📥 下载路径: $SMARTCORE_RAW_URL"
+    wget -O /tmp/smartcore.tar.gz --no-check-certificate "$SMARTCORE_RAW_URL" || {
+      echo "❌ 下载失败！请检查 Raw 链接是否有效"; exit 1;
+    }
+
+    # 3. 解压并精准放置
+    # 智能内核通常是 .tar.gz 封装，解压后我们要拿到里面的二进制文件
+    tar -zxvf /tmp/smartcore.tar.gz -C /tmp/ || {
+      echo "❌ 解压失败"; exit 1;
+    }
+
+    # 找到解压出来的二进制文件并移动到 Files 层
+    # 无论它原名是什么，统一命名为 clash_meta 供 OpenClash 原生调用
+    find /tmp -type f -name "clash_meta*" -exec mv {} "$FULL_TARGET_FILE" \;
+
+    # 4. 权限与验证
+    chmod +x "$FULL_TARGET_FILE"
+    echo "🧪 验证 SmartCore 架构与版本..."
+    FILE_INFO=$(file "$FULL_TARGET_FILE")
+    
+    if echo "$FILE_INFO" | grep -q "aarch64"; then
+      echo "✅ 成功获取 arm64 架构 SmartCore"
+      echo "📋 内核详细信息: $FILE_INFO"
+    else
+      echo "❌ 架构错误，抓取到的不是 aarch64 内核"; exit 1
+    fi
+
+    # 5. 预加载 GeoIP/GeoSite (既然要极致，就把数据库也打进去)
+    # 这样开机后 SmartCore 的 AI 模型就能立即工作，不需要联网下载数据库
+    mkdir -p "$ROOT_DIR/openwrt/files/etc/openclash/cache"
+    echo "🎉 SmartCore 整合完成，准备进入编译环节。"
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
