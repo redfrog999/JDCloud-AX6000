@@ -16,9 +16,14 @@ echo "========================="
 chmod +x ${GITHUB_WORKSPACE}/immortalwrt/function.sh
 source ${GITHUB_WORKSPACE}/immortalwrt/function.sh
 
-#解决rust失败问题
-sed -i 's/BUILD_VARIANT:=host/BUILD_VARIANT:=target/g' feeds/packages/lang/rust/Makefile
+# 1. 找出所有在 Makefile 里定义了依赖 rust 的包并强制删除它们
+find feeds/ -name Makefile -exec grep -l "DEPENDS:=.*rust" {} + | xargs rm -rf
 
+# 2. 彻底屏蔽 Rust 相关的配置条目
+sed -i 's/CONFIG_PACKAGE_rust=y/# CONFIG_PACKAGE_rust is not set/g' .config
+sed -i 's/CONFIG_PACKAGE_librsvg=y/# CONFIG_PACKAGE_librsvg is not set/g' .config
+
+# 3. 既然没有 Rust，就不需要那些复杂的 curl patch 了，直接用原生最稳的
 # 默认IP修改为20.1
 sed -i 's/192.168.6.1/192.168.20.1/g' package/base-files/files/bin/config_generate
 
