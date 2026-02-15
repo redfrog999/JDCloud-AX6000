@@ -19,18 +19,12 @@ source ${GITHUB_WORKSPACE}/immortalwrt/function.sh
 # 默认IP由1.1修改为10.1
 sed -i 's/192.168.6.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 
-# 最大连接数修改为65535
-# sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
+# 1. 找出所有在 Makefile 里定义了依赖 rust 的包并强制删除它们
+find feeds/ -name Makefile -exec grep -l "DEPENDS:=.*rust" {} + | xargs rm -rf
 
-# luci-compat - 修复上移下移按钮翻译
-sed -i 's/<%:Up%>/<%:Move up%>/g' feeds/luci/modules/luci-compat/luasrc/view/cbi/tblsection.htm
-sed -i 's/<%:Down%>/<%:Move down%>/g' feeds/luci/modules/luci-compat/luasrc/view/cbi/tblsection.htm
-
-# luci-compat - remove extra line breaks from description
-# sed -i '/<br \/>/d' feeds/luci/modules/luci-compat/luasrc/view/cbi/full_valuefooter.htm
-
-# 修复procps-ng-top导致首页cpu使用率无法获取
-# sed -i 's#top -n1#\/bin\/busybox top -n1#g' feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/luci
+# 2. 彻底屏蔽 Rust 相关的配置条目
+sed -i 's/CONFIG_PACKAGE_rust=y/# CONFIG_PACKAGE_rust is not set/g' .config
+sed -i 's/CONFIG_PACKAGE_librsvg=y/# CONFIG_PACKAGE_librsvg is not set/g' .config
 
 # 強制給予 uci-defaults 腳本執行權限，防止雲端編譯權限丟失
 chmod +x files/etc/uci-defaults/99_physical_sovereignty
