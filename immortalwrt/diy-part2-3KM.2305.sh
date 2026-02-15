@@ -16,24 +16,21 @@ echo "========================="
 chmod +x ${GITHUB_WORKSPACE}/immortalwrt/function.sh
 source ${GITHUB_WORKSPACE}/immortalwrt/function.sh
 
-#解决rust失败问题
-sed -i 's/BUILD_VARIANT:=host/BUILD_VARIANT:=target/g' feeds/packages/lang/rust/Makefile
-
 # 默认IP由1.1修改为10.1
 sed -i 's/192.168.6.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 
 # 最大连接数修改为65535
-sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
+# sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
 # luci-compat - 修复上移下移按钮翻译
 sed -i 's/<%:Up%>/<%:Move up%>/g' feeds/luci/modules/luci-compat/luasrc/view/cbi/tblsection.htm
 sed -i 's/<%:Down%>/<%:Move down%>/g' feeds/luci/modules/luci-compat/luasrc/view/cbi/tblsection.htm
 
 # luci-compat - remove extra line breaks from description
-sed -i '/<br \/>/d' feeds/luci/modules/luci-compat/luasrc/view/cbi/full_valuefooter.htm
+# sed -i '/<br \/>/d' feeds/luci/modules/luci-compat/luasrc/view/cbi/full_valuefooter.htm
 
 # 修复procps-ng-top导致首页cpu使用率无法获取
-sed -i 's#top -n1#\/bin\/busybox top -n1#g' feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/luci
+# sed -i 's#top -n1#\/bin\/busybox top -n1#g' feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/luci
 
 # 強制給予 uci-defaults 腳本執行權限，防止雲端編譯權限丟失
 chmod +x files/etc/uci-defaults/99_physical_sovereignty
@@ -105,7 +102,7 @@ else
 fi
 
 # 1. 物理注入源码包（你之前的 Release 逻辑）
-# wget -O dl/rustc-1.90.0-src.tar.xz "https://github.com/redfrog999/JDCloud-AX6000/releases/download/rustc_1.9.0/rustc-1.90.0-src.tar.xz"
+wget -O dl/rustc-1.90.0-src.tar.xz "https://github.com/redfrog999/JDCloud-AX6000/releases/download/rustc_1.9.0/rustc-1.90.0-src.tar.xz"
 
 # 2. 暴力解决 Cargo.toml.orig 缺失报错
 # 遍历 build_dir 查找所有 serde 目录，并强行生成缺失的 orig 文件
@@ -211,17 +208,12 @@ sed -i 's/procd_set_param stderr 1/procd_set_param stderr 0/g' feeds/packages/ut
 # git clone https://github.com/sbwml/feeds_packages_net_curl feeds/packages/net/curl
 
 # 替换curl修改版（无nghttp3、ngtcp2）
-curl_ver=$(cat feeds/packages/net/curl/Makefile | grep -i "PKG_VERSION:=" | awk 'BEGIN{FS="="};{print $2}')
-[ "$(check_ver "$curl_ver" "8.12.0")" != "0" ] && {
-	echo "替换curl版本"
-	rm -rf feeds/packages/net/curl
-	cp -rf ${GITHUB_WORKSPACE}/patch/curl feeds/packages/net/curl
-}
-
-# apk-tools APK管理器不再校验版本号的合法性
-mkdir -p package/system/apk/patches && cp -f ${GITHUB_WORKSPACE}/patch/apk-tools/9999-hack-for-linux-pre-releases.patch package/system/apk/patches/
-
-mirror=raw.githubusercontent.com/sbwml/r4s_build_script/master
+# curl_ver=$(cat feeds/packages/net/curl/Makefile | grep -i "PKG_VERSION:=" | awk 'BEGIN{FS="="};{print $2}')
+# [ "$(check_ver "$curl_ver" "8.12.0")" != "0" ] && {
+	# echo "替换curl版本"
+	# rm -rf feeds/packages/net/curl
+	# cp -rf ${GITHUB_WORKSPACE}/patch/curl feeds/packages/net/curl
+# }
 
 # 防火墙4添加自定义nft命令支持
 # curl -s https://$mirror/openwrt/patch/firewall4/100-openwrt-firewall4-add-custom-nft-command-support.patch | patch -p1
@@ -279,21 +271,12 @@ pushd feeds/packages
 	}
 popd
 
-# Realtek driver - R8168 & R8125 & R8126 & R8152 & R8101 & r8127
-rm -rf package/kernel/{r8168,r8101,r8125,r8126,r8127}
-git clone https://github.com/sbwml/package_kernel_r8168 package/kernel/r8168
-git clone https://github.com/sbwml/package_kernel_r8152 package/kernel/r8152
-git clone https://github.com/sbwml/package_kernel_r8101 package/kernel/r8101
-git clone https://github.com/sbwml/package_kernel_r8125 package/kernel/r8125
-git clone https://github.com/sbwml/package_kernel_r8126 package/kernel/r8126
-git clone https://github.com/sbwml/package_kernel_r8127 package/kernel/r8127
-
 # 修正部分从第三方仓库拉取的软件 Makefile 路径问题
-find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/..\/..\/luci.mk/$(TOPDIR)\/feeds\/luci\/luci.mk/g' {}
-find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/..\/..\/lang\/golang\/golang-package.mk/$(TOPDIR)\/feeds\/packages\/lang\/golang\/golang-package.mk/g' {}
-find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/..\/..\/lang\/rust\/rust-package.mk/$(TOPDIR)\/feeds\/packages\/lang\/rust\/rust-package.mk/g' {}
-find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_URL:=@GHREPO/PKG_SOURCE_URL:=https:\/\/github.com/g' {}
-find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_URL:=@GHCODELOAD/PKG_SOURCE_URL:=https:\/\/codeload.github.com/g' {}
+# find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/..\/..\/luci.mk/$(TOPDIR)\/feeds\/luci\/luci.mk/g' {}
+# ind package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/..\/..\/lang\/golang\/golang-package.mk/$(TOPDIR)\/feeds\/packages\/lang\/golang\/golang-package.mk/g' {}
+# find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/..\/..\/lang\/rust\/rust-package.mk/$(TOPDIR)\/feeds\/packages\/lang\/rust\/rust-package.mk/g' {}
+# find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_URL:=@GHREPO/PKG_SOURCE_URL:=https:\/\/github.com/g' {}
+# find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_URL:=@GHCODELOAD/PKG_SOURCE_URL:=https:\/\/codeload.github.com/g' {}
 
 # 自定义默认配置
 sed -i '/exit 0$/d' package/emortal/default-settings/files/99-default-settings
