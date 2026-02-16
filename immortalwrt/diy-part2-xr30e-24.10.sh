@@ -7,28 +7,6 @@ echo "========================="
 # 修改默认IP
 sed -i 's/192.168.6.1/192.168.20.1/g' package/base-files/files/bin/config_generate
 
-# 解除rustc依赖，但是扫描时精准避开“生命线”
-# 1.使用 -vE 逻辑，强制让 find 跳过这四个核心包
-find feeds/ -name Makefile -exec grep -l "DEPENDS:=.*rust" {} + | grep -vE "smartdns|ruby|dnsmasq-full" | xargs rm -rf
-
-# --- [依赖名对齐：解决图 7 报错的关键] ---
-# 2. 强制将 OpenClash 依赖的 dnsmasq-full-full 缩减为 dnsmasq-full
-# 这一步是为了干掉那个多余的 "-full" 后缀
-find package/ -name Makefile -exec sed -i 's/dnsmasq-full-full/dnsmasq-full/g' {} +
-find feeds/ -name Makefile -exec sed -i 's/dnsmasq-full-full/dnsmasq-full/g' {} +
-
-# 3. 菜单逻辑二次加固
-# 在脚本末尾再次显式声明，确保这些包被选中且不会被后续逻辑剔除
-echo "CONFIG_PACKAGE_dnsmasq-full=y" >> .config
-echo "CONFIG_PACKAGE_smartdns=y" >> .config
-echo "CONFIG_PACKAGE_ruby=y" >> .config
-echo "CONFIG_PACKAGE_ruby-yaml=y" >> .config
-echo "CONFIG_PACKAGE_dnsmasq=n" >> .config
-
-# 4. 彻底屏蔽 Rust 相关的配置条目
-sed -i 's/CONFIG_PACKAGE_rust=y/# CONFIG_PACKAGE_rust is not set/g' .config
-sed -i 's/CONFIG_PACKAGE_librsvg=y/# CONFIG_PACKAGE_librsvg is not set/g' .config
-
 # 彻底清理 PassWall、老旧 OpenClash 和残留核心库 (防止逻辑冲突)
 rm -rf feeds/packages/net/{xray*,v2ray*,sing-box,hysteria*,shadowsocks*,trojan*,clash*}
 rm -rf feeds/luci/applications/luci-app-passwall
@@ -75,27 +53,6 @@ sed -i 's/dnsmasq/dnsmasq-full/g' package/luci-app-openclash/luci-app-openclash/
 mkdir -p dl
 RUST_URL="https://github.com/redfrog999/JDCloud-AX6000/releases/download/rustc_1.9.0/rustc-1.90.0-src.tar.xz"
 wget -qO dl/rustc-1.90.0-src.tar.xz "$RUST_URL"
-
-# 2. 深度伪造逻辑：解决 Checksum 错误 (核心修正) ---
-# 我们不再去 build_dir 伪造文件，而是修改 Makefile，在解压后瞬间注入
-# 找到 Rust 软件包的 Makefile
-RUST_MAKEFILE=$(find feeds/packages/lang/rust -name "Makefile")
-
-if [ -n "$RUST_MAKEFILE" ]; then
-    # 物理修改 PKG_HASH 确保与下载的文件完全对齐
-    NEW_HASH=$(sha256sum dl/rustc-1.90.0-src.tar.xz | awk '{print $1}')
-    sed -i "s/PKG_HASH:=.*/PKG_HASH:=$NEW_HASH/g" "$RUST_MAKEFILE"
-    
-    # 注入注入伪造逻辑：在源码解压后 (Post-extract)，物理补全缺失文件并清除校验清单
-    # 这样系统在计算 Checksum 前，逻辑就已经对齐了
-    sed -i '/\$(Build\/Patch)/i \
-	find \$(PKG_BUILD_DIR) -name "Cargo.toml.orig" -delete \
-	find \$(PKG_BUILD_DIR) -name "*.orig" -delete' "$RUST_MAKEFILE"
-fi
-
-# 3. 环境变量对齐 (解决路径错误) ---
-# 强制指定 CARGO_HOME，防止系统去 Runner 的根目录乱撞
-echo "export CARGO_HOME=\$(TOPDIR)/dl/cargo" >> "$RUST_MAKEFILE"
 
 # --- 3. 硬件性能加速与指令集对齐 (SafeXcel & A53) ---
 
