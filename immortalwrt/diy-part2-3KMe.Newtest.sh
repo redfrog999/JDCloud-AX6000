@@ -46,7 +46,6 @@ git clone https://github.com/nikkinikki-org/OpenWrt-nikki package/luci-app-nikki
 # 克隆最新版 OpenClash 并强制对齐 dnsmasq-full
 find ./ -name "luci-app-openclash" -type d -exec rm -rf {} +
 git clone --depth 1 -b master https://github.com/vernesong/OpenClash.git package/luci-app-openclash
-sed -i 's/dnsmasq/dnsmasq-full/g' package/luci-app-openclash/luci-app-openclash/Makefile
 
 # --- 3. 硬件性能加速与指令集对齐 (SafeXcel & A53) ---
 
