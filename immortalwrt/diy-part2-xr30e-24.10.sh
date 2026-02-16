@@ -47,59 +47,28 @@ find ./ -name "luci-app-openclash" -type d -exec rm -rf {} +
 git clone --depth 1 -b master https://github.com/vernesong/OpenClash.git package/luci-app-openclash
 sed -i 's/dnsmasq/dnsmasq-full/g' package/luci-app-openclash/luci-app-openclash/Makefile
 
-# =========================================================
-# 🧬 终极绝杀：Release 投送 + 物理越过 Cargo 陷阱
-# =========================================================
-
-# 1. 精准投送：强行指定 Release 下载路径，避开官方断链包
-RUST_FILE="rustc-1.90.0-src.tar.xz"
-RUST_URL="https://github.com/redfrog999/JDCloud-AX6000/releases/download/rustc_1.9.0/$RUST_FILE"
-
-mkdir -p dl
-wget -qO dl/$RUST_FILE "$RUST_URL"
-
-# 2. 物理劫持 Makefile：注入临场手术指令
+# --- [ 🧬 基因级重编：Makefile 夺权逻辑 ] ---
 RUST_MAKEFILE=$(find feeds/packages/lang/rust -name "Makefile")
 
 if [ -n "$RUST_MAKEFILE" ]; then
-    # 强制跳过初次 Hash 校验，确保系统认领我们下载的 Release 包
+    # 1. 强制换源：不准去官网，只准去你的 Release 下载
+    sed -i "s|PKG_SOURCE_URL:=.*|PKG_SOURCE_URL:=https://github.com/redfrog999/JDCloud-AX6000/releases/download/rustc_1.9.0/|g" "$RUST_MAKEFILE"
+    
+    # 2. 物理过审：跳过 Hash 校验
     sed -i 's/PKG_HASH:=.*/PKG_HASH:=skip/g' "$RUST_MAKEFILE"
 
-    # 绝杀：在 Build/Compile 启动的一瞬间，物理补齐 Cargo.toml.orig
-    # 这一步解决了你看到的“明明包里有，系统却睁眼瞎”的问题
-    sed -i '/Build\/Compile/a \
+    # 3. 临场补齐：在解压后的 Prepare 阶段强制补齐文件
+    # 这一行是解决图 15 中 "No such file" 的绝杀
+    sed -i '/define Build\/Prepare/a \
 	find $(PKG_BUILD_DIR) -name ".cargo-checksum.json" -delete \
-	find $(PKG_BUILD_DIR) -name "Cargo.toml.orig" -exec touch {} +' "$RUST_MAKEFILE"
+	find $(PKG_BUILD_DIR) -name "Cargo.toml.orig" -exec touch {} + \
+	find $(PKG_BUILD_DIR) -name "*.json" -exec touch {} +' "$RUST_MAKEFILE"
 fi
 
-# 3. 依赖名精准降级：解决 dnsmasq-full-full 报错
-find package/ feeds/ -name Makefile -exec sed -i 's/dnsmasq-full-full/dnsmasq-full/g' {} +
-
-# 4. 锁定“咆哮版”生命线包
-echo "CONFIG_PACKAGE_dnsmasq-full=y" >> .config
-echo "CONFIG_PACKAGE_smartdns=y" >> .config
-echo "CONFIG_PACKAGE_kmod-crypto-user=y" >> .config # 开启 SafeXcel 硬件引擎
-
-# 5. 环境锁死：强制离线编译
+# 4. 环境强制对齐：彻底断开 Cargo 的外连念想
 export CARGO_NET_OFFLINE=true
 export CARGO_HTTP_CHECK_REVOCABLE=false
-rm -rf tmp/.packageinfo
 
-# 3. 锁定生命线包 (确保 SmartDNS、Ruby、SafeXcel 正常)
-echo "CONFIG_PACKAGE_dnsmasq-full=y" >> .config
-echo "CONFIG_PACKAGE_smartdns=y" >> .config
-echo "CONFIG_PACKAGE_ruby=y" >> .config
-echo "CONFIG_PACKAGE_ruby-yaml=y" >> .config
-echo "CONFIG_PACKAGE_kmod-crypto-user=y" >> .config
-
-# 4. sbwml 版 Argon 皮肤物理注入
-rm -rf feeds/luci/themes/luci-theme-argon package/luci-theme-argon
-git clone --depth 1 -b openwrt-24.10 https://github.com/sbwml/luci-theme-argon package/luci-theme-argon
-
-# 5. 编译环境闭环：强制离线编译
-export CARGO_NET_OFFLINE=true
-export CARGO_GENERATE_LOCKFILE=false
-rm -rf tmp/.packageinfo
 # --- 3. 硬件性能加速与指令集对齐 (SafeXcel & A53) ---
 
 # 唤醒 SafeXcel 硬件引擎编译参数
