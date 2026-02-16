@@ -48,6 +48,9 @@ mkdir -p dl
 RUST_URL="https://github.com/redfrog999/JDCloud-AX6000/releases/download/rustc_1.9.0/rustc-1.90.0-src.tar.xz"
 wget -qO dl/rustc-1.90.0-src.tar.xz "$RUST_URL"
 
+
+# --- 3. 硬件性能加速与指令集对齐 (SafeXcel & A53) ---
+
 # 唤醒 SafeXcel 硬件引擎编译参数
 sed -i 's/-Os -pipe/-O2 -pipe -march=armv8-a+crc+crypto -mtune=cortex-a53/g' include/target.mk
 sed -i 's/-mcpu=cortex-a53/-mcpu=cortex-a53+crc+crypto/g' include/target.mk
