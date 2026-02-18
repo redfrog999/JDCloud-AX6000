@@ -21,7 +21,7 @@ env:
   #CONFIG_FILE: immortalwrt/.config.mt7981.All.bak
   CONFIG_FILE: immortalwrt/config.XR30eMMC.Padavanonly-24.10-6.6.bak
   DIY_P1_SH: immortalwrt/diy-part1.sh
-  DIY_P2_SH: immortalwrt/diy-part2-3KM.2305.sh
+  DIY_P2_SH: immortalwrt/diy-part2-xr30e.Newtest.sh
   TZ: Asia/Shanghai
 
 jobs:
