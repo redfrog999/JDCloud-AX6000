@@ -4,11 +4,6 @@
 # 修改默认IP
 sed -i 's/192.168.6.1/192.168.20.1/g' package/base-files/files/bin/config_generate
 
-# 彻底清理 PassWall、老旧 OpenClash 和残留核心库 (防止逻辑冲突)
-rm -rf feeds/packages/net/{xray*,v2ray*,sing-box,hysteria*,shadowsocks*,trojan*,clash*}
-rm -rf feeds/luci/applications/luci-app-passwall
-rm -rf package/passwall-packages
-
 # --- 1. 添加主题及筑底构建
 rm -rf feeds/luci/themes/luci-theme-argon
 # git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
@@ -192,20 +187,9 @@ ln -sf ../init.d/smp_optimize package/base-files/files/etc/rc.d/S99smp_optimize
 
 echo "✅ 资产收束完成：S99smp_optimize 已成功对位，无报错隐患。"
 
-# d.[ 内核调度调优：针对 A53 1.6&2.3GHz 优化 缩短调度周期，匹配高频心跳，降低 Hy2 延迟|[网络吞吐优化] 提高软中断处理预算 ]
-# 使用 append 模式写入 sysctl.conf
-cat << 'EOF' >> package/base-files/files/etc/sysctl.conf
-kernel.sched_latency_ns=8000000
-kernel.sched_min_granularity_ns=1000000
-kernel.sched_wakeup_granularity_ns=1500000
-net.core.netdev_budget=1000
-net.core.netdev_budget_usecs=10000
-EOF
-
 # e.物理 HNAT (PPE) 开启逻辑注入
 sed -i '/exit 0/i \
 sysctl -w net.netfilter.nf_flow_table_hw=1 \
-for i in /sys/devices/system/cpu/cpufreq/policy*; do echo performance > "$i/scaling_governor"; done \
 modprobe crypto_safexcel 2>/dev/null' package/base-files/files/etc/rc.local
 
 ./scripts/feeds update -a && ./scripts/feeds install -a
